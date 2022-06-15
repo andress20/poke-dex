@@ -4,14 +4,17 @@
     "node": true,
     "jest": true
   },
-  "extends": ["eslint:recommended",
+  "extends": [
+    "eslint:recommended",
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"],
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "rules": {
     "quotes": ["error", "single"],
-    "indent": ["error", 2],
+    // "indent": ["error", 2],
     "react/react-in-jsx-scope": "off"
   },
   "parserOptions": {
