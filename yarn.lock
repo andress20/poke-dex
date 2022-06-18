@@ -200,7 +200,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@^5.21.0":
+"@typescript-eslint/parser@^5.21.0", "@typescript-eslint/parser@^5.28.0":
   version "5.28.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.28.0.tgz#639b101cad2bfb7ae16e69710ac95c42bd4eae33"
   integrity sha512-ekqoNRNK1lAcKhZESN/PdpVsWbP9jtiNqzFWkp/yAUdZvJalw2heCYuqRmM5eUJSIYEkgq5sGOjq+ZqsLMjtRA==
@@ -604,6 +604,11 @@ eslint-config-next@12.1.6:
     eslint-plugin-jsx-a11y "^6.5.1"
     eslint-plugin-react "^7.29.4"
     eslint-plugin-react-hooks "^4.5.0"
+
+eslint-config-prettier@^8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
+  integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
