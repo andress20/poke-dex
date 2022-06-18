@@ -4,5 +4,6 @@
   "tabWidth": 2,
   "arrowParens": "avoid",
   "printWidth": 120,
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "trailingComma": "es5"
 }

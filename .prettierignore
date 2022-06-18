@@ -9,3 +9,4 @@ coverage
 **/.git
 **/.svn
 **/.hg
+**/.next

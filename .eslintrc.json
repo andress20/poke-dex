@@ -7,7 +7,9 @@
   },
   "extends": [
     "eslint:recommended",
+    "next",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime", // same as react/react-in-jsx-scope: off (import React peer file is not necessary)
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
@@ -21,8 +23,5 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {
-    "quotes": ["error", "single"],
-    "react/react-in-jsx-scope": "off"
-  }
+  "rules": {}
 }
