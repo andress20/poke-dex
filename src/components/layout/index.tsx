@@ -1,17 +1,14 @@
 import Header from '@comp/layout/header'
 import Footer from '@comp/layout/footer'
-import { IPlainObject } from '@def/IPlainObject'
+import IPlainObject from '@def/IPlainObject'
+import React from 'react'
 
-const Layout: React.FC<IPlainObject> = ({ children, name }) => {
-  const sumar = (a: number, b: number): number => {
-    return a + b
-  }
+// type Props = { children: React.ReactNode }
 
-  sumar(20, 50)
+const Layout: React.FC<IPlainObject> = ({ children }) => {
   return (
     <div>
       <Header />
-      {name}
       {children}
       <Footer />
     </div>

@@ -3,7 +3,7 @@ import Layout from '@comp/layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout name="andres">
+    <Layout>
       <Component {...pageProps} />
     </Layout>
   )

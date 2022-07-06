@@ -1,29 +1,35 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
+import { Fragment, useState } from 'react'
+import Head from 'next/Head'
 
-const Home: NextPage = () => {
+//Components
+import Dashboard from '@comp/dashboard'
+
+//utilities
+import { config } from '@util/config'
+import IPlainObject from '@def/IPlainObject'
+
+const Home: NextPage<IPlainObject> = props => {
+  console.log('pokemons:', props.dashboardPokemons)
+  const images: string[] = props.dashboardPokemons.map((images: { sprites: any }) => images.sprites)
+  console.log('images:', images)
+
   return (
-    <div>
-      Hola desde el Home
-      {/* <Head>
+    <Fragment>
+      <Head>
         <title>Poke-dex</title>
         <meta name="description" content="Poke dex app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
-    </div>
+      <Dashboard pokemons={images} />
+    </Fragment>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch(`${config.siteUrl}/api/AllPokemons`)
+  const dashboardPokemons = await response.json()
+  return { props: { dashboardPokemons } }
 }
 
 export default Home

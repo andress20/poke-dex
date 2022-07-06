@@ -1,3 +1,3 @@
-export interface IPlainObject<T = any> {
+export default interface IPlainObject<T = any> {
   [key: string]: T
 }
