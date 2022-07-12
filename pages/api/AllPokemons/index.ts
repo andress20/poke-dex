@@ -4,9 +4,9 @@ import Pokedex from 'pokedex-promise-v2'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const pokedexApi = new Pokedex()
   try {
-    const data = await pokedexApi.getPokemonByName(['eevee', 'ditto'])
-    return res.status(200).json(data)
+    const pokemons = await pokedexApi.getPokemonByName(['eevee', 'charizard', 'butterfree', 'pidgey'])
+    return res.status(200).json(pokemons)
   } catch (error) {
-    console.log('There was an ERROR in getPokemonByName: ', error)
+    return res.status(500).json({ error: true, message: `There was an ERROR in getPokemonByName ${error}` })
   }
 }

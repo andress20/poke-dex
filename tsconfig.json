@@ -5,6 +5,7 @@
       "@comp/*": ["src/components/*"],
       "@util/*": ["src/utilities/*"],
       "@def/*": ["src/definitions/*"],
+      "@services/*": ["src/services/*"],
       "@hook/*": ["src/hooks/*"],
       "@redux/*": ["src/redux/*"],
       "@theme/*": ["src/themes/*"],

@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   // images: {
   //   loader: 'imgix',
-  //   path: '',
+  //   path: 'https://pokeapi.co/api/v2/pokemon',
   // },
 }
 
