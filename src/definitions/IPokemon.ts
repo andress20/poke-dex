@@ -1,12 +1,3 @@
-export class Pokemons {
-  pokemonList: IPokemon[]
-  toString = () => `Este objeto es tipo Pokemon`
-
-  constructor(pokemonResponse: IPokemon[]) {
-    this.pokemonList = pokemonResponse
-  }
-}
-
 export interface IPokemon {
   abilities: Ability[]
   base_experience: number

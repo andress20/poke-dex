@@ -7,6 +7,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const pokemons = await pokedexApi.getPokemonByName(['eevee', 'charizard', 'butterfree', 'pidgey'])
     return res.status(200).json(pokemons)
   } catch (error) {
-    return res.status(500).json({ error: true, message: `There was an ERROR in getPokemonByName ${error}` })
+    return res
+      .status(500)
+      .json({ error: true, message: `There was an ERROR in api/AllPokemons => getPokemonByName ${error}` })
   }
 }
