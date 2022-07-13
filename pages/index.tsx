@@ -5,11 +5,13 @@ import Head from 'next/Head'
 import { Fragment } from 'react'
 //Definitions
 import IPlainObject from '@def/IPlainObject'
-import { Sprites, IPokemon } from '@def/IPokemon'
+import { IPokemon } from '@def/IPokemon'
 //Services
 import { getPokemons } from '@services/services'
 //Components
 import Dashboard from '@comp/dashboard'
+//Utilities
+import { config } from '@util/config'
 
 const Home: NextPage<IPlainObject> = ({ pokemonImages }) => {
   return (
@@ -26,7 +28,9 @@ const Home: NextPage<IPlainObject> = ({ pokemonImages }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response: IPokemon[] = await getPokemons()
-  const pokemonImages: Sprites[] = response.map((images: IPokemon) => images.sprites)
+  const pokemonImages: string[] = response.map(
+    (images: IPokemon) => images?.sprites?.other?.dream_world.front_default ?? '/pokeball-logo.png'
+  )
   // response tiene la REFERENCIA a un objeto de tipo Pokemon, si paso esta referencia a los props no funciona,
   // porque no puede serializar una referencia
   // const pokemons = JSON.parse(JSON.stringify(response)) // Aqui pierde el tipo IPokemon[] y toca volverlo a instanciar dentro del componente
