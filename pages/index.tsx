@@ -1,6 +1,6 @@
 //NextJS
 import type { GetStaticProps, NextPage } from 'next'
-import Head from 'next/Head'
+import Head from 'next/head'
 //React
 import { Fragment } from 'react'
 //Definitions

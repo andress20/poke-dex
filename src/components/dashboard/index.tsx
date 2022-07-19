@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import Image from 'next/Image'
+import Image from 'next/image'
 import IPlainObject from '@def/IPlainObject'
 
 const Dashboard: React.FC<IPlainObject> = ({ pokemons }) => {
