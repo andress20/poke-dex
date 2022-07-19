@@ -1,0 +1,20 @@
+.button {
+  font-weight: 700;
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 12px;
+  padding: 10px 16px;
+  color: black;
+  background: transparent;
+  border: 0;
+}
+.button--primary {
+  background-image: linear-gradient(to left, #ff4e50, #f9d423);
+}
+.button--secondary {
+  color: #333;
+  background: #f9d423;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}

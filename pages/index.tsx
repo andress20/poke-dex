@@ -4,14 +4,13 @@ import Head from 'next/Head'
 //React
 import { Fragment } from 'react'
 //Definitions
-import IPlainObject from '@def/IPlainObject'
 import { IPokemon } from '@def/IPokemon'
 //Services
 import { getPokemons } from '@services/services'
 //Components
 import Dashboard from '@comp/dashboard'
 
-const Home: NextPage<IPlainObject> = ({ pokemonImages }) => {
+const Home: NextPage<{ pokemonImages: string[] }> = ({ pokemonImages }) => {
   return (
     <Fragment>
       <Head>
