@@ -1,4 +1,4 @@
-// import './style.css'
+// import './styles.css'
 // import { ButtonProps } from './definitions'
 
 // export const Button: React.FC<ButtonProps> = ({ primary = false, label, ...props }) => {

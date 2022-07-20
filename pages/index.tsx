@@ -9,6 +9,7 @@ import { IPokemon } from '@def/IPokemon'
 import { getPokemons } from '@services/services'
 //Components
 import Dashboard from '@comp/dashboard'
+import Card from '@comp/molecules/card'
 
 const Home: NextPage<{ pokemonImages: string[] }> = ({ pokemonImages }) => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage<{ pokemonImages: string[] }> = ({ pokemonImages }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Dashboard pokemons={pokemonImages} />
+      <Card title="prueba" image="/vercel.svg" />
     </Fragment>
   )
 }

@@ -1,5 +1,5 @@
 import Header from '@comp/layout/header'
-import Footer from '@comp/layout/footer'
+import Footer from '@comp/molecules/footer'
 import IPlainObject from '@def/IPlainObject'
 import React from 'react'
 
