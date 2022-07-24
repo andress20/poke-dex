@@ -4,8 +4,8 @@
     "paths": {
       "@comp/*": ["src/components/*"],
       "@atoms/*": ["src/components/atoms/*"],
-      "@mole/*": ["src/components/molecules/*"],
-      "@org/*": ["src/components/organisms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
       "@util/*": ["src/utilities/*"],
       "@def/*": ["src/definitions/*"],
       "@services/*": ["src/services/*"],

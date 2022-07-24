@@ -1,7 +1,7 @@
-import Dashboard from '@comp/dashboard'
+import Dashboard from '@organisms/dashboard'
 
 const SpecificPokemonDashboard = () => {
-  return <Dashboard />
+  return <div>SpecificPokemonDashboard</div>
 }
 
 export default SpecificPokemonDashboard

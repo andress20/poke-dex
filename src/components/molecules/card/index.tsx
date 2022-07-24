@@ -1,18 +1,17 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
-import styles from './Button.module.css'
-// import './Button.module.css'
+import styles from './card.module.css'
 interface componentProps {
-  title: string
   image: string
+  title: string
 }
 
-const Card: React.FC<componentProps> = ({ title, image }) => {
+const Card: React.FC<componentProps> = ({ image, title }) => {
   return (
     <Fragment>
       <div className={styles.card}>
-        <img src={image} alt="Vercel Logo" width={72} height={16} />
-        <h3 className={styles.cardTitle}>{title}</h3>
+        <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
+        <h3 className={styles.cardTitle}>{title.toLocaleUpperCase()}</h3>
       </div>
     </Fragment>
   )

@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+// const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-  // images: {
-  //   loader: 'imgix',
-  //   path: 'https://pokeapi.co/api/v2/pokemon',
-  // },
+  images: {
+    domains: ['raw.githubusercontent.com'],
+  },
 }
-
-module.exports = nextConfig

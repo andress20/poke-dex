@@ -182,3 +182,10 @@ export interface Type {
   slot: number
   type: Species
 }
+
+export interface IPokemonsImages {
+  // TODO: esto esta muy raro
+  [x: string]: any
+  name: string
+  url: string
+}
