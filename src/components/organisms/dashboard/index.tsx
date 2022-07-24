@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { IPokemonsImages } from '@def/IPokemon'
+// TODO - el storybook no esta tomando los @del ts.config!!
 // import Card from '@molecules/card'
 import Card from '../../molecules/card'
 import styles from './dashboard.module.css'
