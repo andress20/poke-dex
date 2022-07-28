@@ -183,9 +183,11 @@ export interface Type {
   type: Species
 }
 
-export interface IPokemonsImages {
-  // TODO: esto esta muy raro
-  [x: string]: any
+export interface PokemonsImages {
+  images: PokemonUrl[]
+}
+
+export interface PokemonUrl {
   name: string
   url: string
 }

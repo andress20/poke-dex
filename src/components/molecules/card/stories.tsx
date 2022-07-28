@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Card from './index'
+import PokemonCard from './index'
 
 const pokemons = {
   charizard: {
@@ -18,11 +18,11 @@ const pokemons = {
 
 export default {
   title: 'Molecules/Card',
-  component: Card,
+  component: PokemonCard,
   argTypes: {},
-} as ComponentMeta<typeof Card>
+} as ComponentMeta<typeof PokemonCard>
 
-const Template: ComponentStory<typeof Card> = args => <Card {...args} />
+const Template: ComponentStory<typeof PokemonCard> = args => <PokemonCard {...args} />
 
 export const Charizard = Template.bind({})
 Charizard.args = {

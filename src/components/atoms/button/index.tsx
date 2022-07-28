@@ -13,5 +13,5 @@
 import Button from '@mui/material/Button'
 
 export const PokemonButton: React.FC = () => {
-  return <Button variant="contained">Hello World</Button>
+  return <Button variant="contained">Hola</Button>
 }
