@@ -4,17 +4,13 @@ import Head from 'next/head'
 //React
 import { Fragment } from 'react'
 //Definitions
-import { IPokemon, PokemonUrl } from '@def/IPokemon'
+import { IPokemon, PokemonUrl, PokemonsImages } from '@def/IPokemon'
 //Services
 import { getPokemons } from '@services/services'
 //Components
 import Dashboard from '@comp/organisms/dashboard'
 
-interface ComponentProps {
-  images: PokemonUrl[]
-}
-
-const Home: NextPage<ComponentProps> = ({ images }) => {
+const Home: NextPage<PokemonsImages> = ({ images }) => {
   return (
     <div>
       <Fragment>
