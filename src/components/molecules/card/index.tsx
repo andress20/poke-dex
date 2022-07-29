@@ -1,19 +1,5 @@
-// import { Fragment } from 'react'
 import Image from 'next/image'
 import styles from './card.module.css'
-
-// const Card: React.FC<componentProps> = ({ image, title }) => {
-//   return (
-//     <Fragment>
-//       <div className={styles.card}>
-//         <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
-//         <h3 className={styles.cardTitle}>{title.toLocaleUpperCase()}</h3>
-//       </div>
-//     </Fragment>
-//   )
-// }
-
-// export default Card
 
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
@@ -28,7 +14,7 @@ interface componentProps {
 
 const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   return (
-    <Card sx={{ maxWidth: 300, margin: '10px' }}>
+    <Card sx={{ maxWidth: 300, margin: '10px' }} className={styles.card}>
       <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="300" height="300" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

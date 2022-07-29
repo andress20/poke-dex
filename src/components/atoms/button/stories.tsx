@@ -14,6 +14,6 @@ const Template: ComponentStory<typeof PokemonButton> = args => <PokemonButton {.
 
 export const Primary = Template.bind({})
 Primary.args = {
-  primary: true,
+  secondary: false,
   label: 'Button',
 }

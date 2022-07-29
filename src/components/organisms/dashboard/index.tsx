@@ -9,12 +9,12 @@ const Dashboard: React.FC<PokemonsImages> = ({ images }) => {
   return (
     <Fragment>
       <h1>Dashboard</h1>
+      <PokemonButton label="clickk" />
       <div className={styles.dashboard}>
         {images.map((image: PokemonUrl) => (
           <PokemonCard key={image.name} title={image.name} image={image.url} />
         ))}
       </div>
-      <PokemonButton />
     </Fragment>
   )
 }

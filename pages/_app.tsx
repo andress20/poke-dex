@@ -1,29 +1,11 @@
 import type { AppProps } from 'next/app'
 import Layout from '@comp/layout'
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
-
-const theme = createTheme({
-  palette: { mode: 'dark' },
-  components: {
-    // Name of the component
-    MuiButton: {
-      styleOverrides: {
-        // Name of the slot
-        containedPrimary: {
-          backgroundColor: 'green',
-        },
-        root: {
-          // Some CSS
-          fontSize: '5rem',
-        },
-      },
-    },
-  },
-})
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import themes, { Themes } from '@theme/index'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themes[Themes.lightTheme]}>
       <CssBaseline />
       <Layout>
         <Component {...pageProps} />
