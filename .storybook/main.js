@@ -6,6 +6,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-viewport',
     'storybook-addon-material-ui',
   ],
   framework: '@storybook/react',
@@ -16,7 +17,15 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@atoms': path.resolve(__dirname, 'src/components/atoms/*'),
+      '@src': path.resolve(__dirname, '../src'),
+      '@comp': path.resolve(__dirname, '../src/components'),
+      '@atoms': path.resolve(__dirname, '../src/components/atoms'),
+      '@molecules': path.resolve(__dirname, '../src/components/molecules'),
+      '@organisms': path.resolve(__dirname, '../src/components/organisms'),
+      '@util': path.resolve(__dirname, '../src/utilities'),
+      '@def': path.resolve(__dirname, '../src/definitions'),
+      '@services': path.resolve(__dirname, '../src/services'),
+      '@theme': ['src/themes'],
     }
 
     return config

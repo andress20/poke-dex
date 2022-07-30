@@ -1,8 +1,8 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '../src/themes'
-
 import Image from 'next/image'
 import { muiTheme } from 'storybook-addon-material-ui'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 Image.defaultProps = {
   unoptimized: true,
@@ -15,6 +15,9 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
   },
 }
 
