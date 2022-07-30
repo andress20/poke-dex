@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   stories: ['../src/**/stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -11,4 +13,12 @@ module.exports = {
     builder: '@storybook/builder-webpack5',
   },
   staticDirs: ['../public'],
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@atoms': path.resolve(__dirname, 'src/components/atoms/*'),
+    }
+
+    return config
+  },
 }
