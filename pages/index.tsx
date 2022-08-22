@@ -12,16 +12,18 @@ import Dashboard from '@comp/organisms/dashboard'
 
 const Home: NextPage<PokemonsImages> = ({ images }) => {
   return (
-    <div>
-      <Fragment>
-        <Head>
-          <title>Poke-dex</title>
-          <meta name="description" content="Poke dex app" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Dashboard images={images} />
-      </Fragment>
-    </div>
+    <>
+      <div>
+        <Fragment>
+          <Head>
+            <title>Poke-dex</title>
+            <meta name="description" content="Poke dex app" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <Dashboard images={images} />
+        </Fragment>
+      </div>
+    </>
   )
 }
 
