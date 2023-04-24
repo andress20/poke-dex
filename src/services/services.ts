@@ -1,4 +1,4 @@
-import { IPokemon } from '@def/IPokemon'
+import { IPokemon } from '@src/types/IPokemon'
 import { config } from '@util/config'
 
 export const getPokemons = async (): Promise<IPokemon[]> => {

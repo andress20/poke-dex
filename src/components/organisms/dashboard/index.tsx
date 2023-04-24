@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { PokemonsImages, PokemonUrl } from '@def/IPokemon'
+import { PokemonsImages, PokemonUrl } from '@src/types/IPokemon'
 // TODO - el storybook no esta tomando los @def ts.config!!
 import PokemonCard from '../../molecules/card'
 import { PokemonButton } from '@atoms/button'

@@ -7,7 +7,7 @@
       "@molecules/*": ["src/components/molecules/*"],
       "@organisms/*": ["src/components/organisms/*"],
       "@util/*": ["src/utilities/*"],
-      "@def/*": ["src/definitions/*"],
+      "@def/*": ["src/types/*"],
       "@services/*": ["src/services/*"],
       "@hook/*": ["src/hooks/*"],
       "@redux/*": ["src/redux/*"],

@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import Pokedex from 'pokedex-promise-v2'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const pokedexApi = new Pokedex()
+  const pokemonApi = `https://pokeapi.co/api/v2/pokemon/`
+  const initialPokemons = ['eevee', 'charizard', 'butterfree']
   try {
-    const pokemons = await pokedexApi.getPokemonByName(['eevee', 'charizard', 'butterfree', 'pidgey'])
-    return res.status(200).json(pokemons)
+    const pokemonData = initialPokemons.map(pokemon => fetch(`${pokemonApi}${pokemon}`).then(res => res.json()))
+    const data = await Promise.all(pokemonData)
+    return res.status(200).json(data)
   } catch (error) {
     return res
       .status(500)

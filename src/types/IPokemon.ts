@@ -1,3 +1,14 @@
+export interface IAllPokemons {
+  count: number
+  next: string
+  previous: string
+  results: IAllPokemonsItem[]
+}
+
+export interface IAllPokemonsItem {
+  name: string
+  url: string
+}
 export interface IPokemon {
   abilities: Ability[]
   base_experience: number

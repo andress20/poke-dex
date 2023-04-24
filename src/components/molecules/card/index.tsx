@@ -6,11 +6,7 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-
-interface componentProps {
-  image: string
-  title: string
-}
+import { componentProps } from './types'
 
 const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   return (

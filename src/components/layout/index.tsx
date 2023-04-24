@@ -1,6 +1,6 @@
 import Header from '@comp/layout/header'
 import Footer from '@comp/molecules/footer'
-import IPlainObject from '@def/IPlainObject'
+import IPlainObject from '@src/types/IPlainObject'
 import React from 'react'
 
 // type Props = { children: React.ReactNode }
