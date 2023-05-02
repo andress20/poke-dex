@@ -11,9 +11,8 @@ const Dashboard: React.FC<PokemonsImages> = ({ images }) => {
       <h1>Dashboard</h1>
       <PokemonButton label="clickk" />
       <div className={styles.dashboard}>
-        {images.map((image: PokemonUrl) => (
-          <PokemonCard key={image.name} title={image.name} image={image.url} />
-        ))}
+        {images &&
+          images.map((image: PokemonUrl) => <PokemonCard key={image.name} title={image.name} image={image.url} />)}
       </div>
     </Fragment>
   )
