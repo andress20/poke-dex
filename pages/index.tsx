@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { Fragment } from 'react'
-import { getAllPokemonsNames, getPokemonByName, getPokemonsImages } from '@services/services'
+import { getPokemonsImages } from '@services/services'
 import Dashboard from '@comp/organisms/dashboard'
 import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query'
 
@@ -11,7 +11,8 @@ const Home: NextPage = () => {
   const { data: pokemonsImages, isLoading } = useQuery({
     queryKey: ['dashboardPokemons'],
     queryFn: () => getPokemonsImages(pokemonsList),
-    staleTime: 60 * 60 * 24, // 1:30 minutes
+    // staleTime: 60 * 60 * 24, // 1:30 minutes
+    staleTime: 2000, // 1:30 minutes
     // TODO: make this with multiplications
   })
 

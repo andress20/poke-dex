@@ -7,21 +7,22 @@ import style from './header.module.css'
 const Header = () => {
   return (
     <Fragment>
-      <div className={style.appBar}>
-        <AppBar position="fixed">
-          <Toolbar variant="dense">
-            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-              <MenuIcon />
-            </IconButton>
-            <MenuItem>
-              <Link href="/">Dashboard</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link href="/about">About</Link>
-            </MenuItem>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <AppBar>
+        <Toolbar variant="dense">
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+            <MenuIcon />
+          </IconButton>
+          <MenuItem>
+            <Link href="/">Dashboard</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/allPokemons">All Pokemons</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/about">About</Link>
+          </MenuItem>
+        </Toolbar>
+      </AppBar>
     </Fragment>
   )
 }

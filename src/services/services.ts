@@ -1,6 +1,16 @@
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@util/config'
 
+export const getAllPokemons = async (page: number) => {
+  const response = await fetch(`${config.siteUrl}/api/AllPokemons`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ page }),
+  })
+  const data = await response.json()
+  return data
+}
+
 export const getAllPokemonsNames = async (): Promise<{ allPokemons: PokemonUrl[] }> => {
   const response = await fetch(`${config.siteUrl}/api/AllPokemonsNames`)
   const data = await response.json()
