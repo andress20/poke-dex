@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getAllPokemons } from '../../src/services/services'
 import { PokemonUrl } from '@def/IPokemon'
 import PokemonCard from '@comp/molecules/card'
+
 function AllPokemons() {
   const [page, setPage] = useState(0)
   const { data: images, isLoading } = useQuery({

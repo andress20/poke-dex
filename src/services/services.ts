@@ -1,3 +1,4 @@
+import { GeneralResult } from '@def/IGeneralResult'
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@util/config'
 
@@ -37,4 +38,29 @@ export const getPokemonByName = async (name: string): Promise<IPokemon> => {
   })
   const pokemonByName = await response.json()
   return pokemonByName
+}
+
+export const getAllPokemonTypes = async (): Promise<GeneralResult> => {
+  const response = await fetch(`${config.siteUrl}/api/PokemonTypes`)
+  const pokemonTypes = await response.json()
+  return pokemonTypes
+}
+
+export const getPokemonsByType = async (data: GeneralResult | undefined, listTypes: string[]): Promise<string[]> => {
+  const listTypesChecked = data?.results.filter(item => listTypes.includes(item.name))
+  if (listTypesChecked) {
+    try {
+      const response = await fetch(`${config.siteUrl}/api/AllPokemonsByType`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pokemons: listTypesChecked }),
+      })
+      const pokemonTypes = await response.json()
+      return pokemonTypes.flat()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return []
 }

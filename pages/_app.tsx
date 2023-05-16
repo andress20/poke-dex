@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         defaultOptions: {
           queries: {
             // cacheTime: 3000, Just and example (default cacheTime 5 minutes)
+            refetchOnWindowFocus: false,
           },
         },
       })

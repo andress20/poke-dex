@@ -19,6 +19,9 @@ const Header = () => {
             <Link href="/allPokemons">All Pokemons</Link>
           </MenuItem>
           <MenuItem>
+            <Link href="/allPokemonsByType">Pokemons by Type</Link>
+          </MenuItem>
+          <MenuItem>
             <Link href="/about">About</Link>
           </MenuItem>
         </Toolbar>

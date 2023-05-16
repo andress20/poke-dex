@@ -11,9 +11,7 @@ const Home: NextPage = () => {
   const { data: pokemonsImages, isLoading } = useQuery({
     queryKey: ['dashboardPokemons'],
     queryFn: () => getPokemonsImages(pokemonsList),
-    // staleTime: 60 * 60 * 24, // 1:30 minutes
-    staleTime: 2000, // 1:30 minutes
-    // TODO: make this with multiplications
+    staleTime: 20 * 60 * 1000, // 20 min
   })
 
   if (isLoading) return <div>Loading... </div>
@@ -35,8 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
   await queryClient.prefetchQuery({
     queryKey: ['dashboardPokemons'],
     queryFn: () => getPokemonsImages(pokemonsList),
-    staleTime: 60 * 60 * 24,
-    // TODO: make this with multiplications
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
   })
 
   return { props: { dehydratedState: dehydrate(queryClient) } }
