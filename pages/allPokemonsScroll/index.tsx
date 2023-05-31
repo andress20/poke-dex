@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from 'react'
+import { Fragment, useEffect, useMemo } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { getAllPokemons } from '../../src/services/services'
 import { GeneralResult } from '@def/IGeneralResult'
@@ -6,8 +6,8 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
 
 function AllPokemonsScroll() {
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['AllPokemons'],
+  const { data, fetchNextPage, hasNextPage, remove } = useInfiniteQuery({
+    queryKey: ['AllPokemonsScroll'],
     queryFn: ({ pageParam = 0 }) => getAllPokemons(pageParam),
     getNextPageParam: (lastPage: GeneralResult) => {
       if (!lastPage.next) return false
@@ -15,6 +15,12 @@ function AllPokemonsScroll() {
       return offset / 12
     },
   })
+
+  useEffect(() => {
+    return () => {
+      remove()
+    }
+  }, [remove])
 
   const pokemonsCount = useMemo(
     () =>
@@ -24,8 +30,13 @@ function AllPokemonsScroll() {
           pokemons: [...prev.pokemons, ...page.pokemons],
         }
       }),
+
     [data]
   )
+
+  console.log('pokemonsCount:', pokemonsCount)
+  //   if (isLoading) return <div>Loading...</div>
+  //   if (isError) return <div>{`Error ${error}`}</div>
 
   return (
     <Fragment>

@@ -8,13 +8,13 @@ import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query'
 const pokemonsList = ['charmander', 'squirtle', 'bulbasaur', 'pikachu']
 
 const Home: NextPage = () => {
-  const { data: pokemonsImages, isLoading } = useQuery({
+  const { data: pokemonsImages, isLoading: homeIsLoading } = useQuery({
     queryKey: ['dashboardPokemons'],
     queryFn: () => getPokemonsImages(pokemonsList),
     staleTime: 20 * 60 * 1000, // 20 min
   })
 
-  if (isLoading) return <div>Loading... </div>
+  if (homeIsLoading) return <div>Loading... </div>
   return (
     <Fragment>
       <Head>
