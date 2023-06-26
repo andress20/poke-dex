@@ -12,6 +12,8 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <meta name="description" content="Poke dex app" />
+          <link rel="icon" href="/snorlax.ico" />
         </Head>
         <body>
           <Main />

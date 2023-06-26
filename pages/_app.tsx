@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={themes[Themes.lightTheme]}>
       <CssBaseline />
       <Head>
+        <title>Poke-dexApp</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Layout>

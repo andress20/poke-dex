@@ -15,16 +15,7 @@ const Home: NextPage = () => {
   })
 
   if (homeIsLoading) return <div>Loading... </div>
-  return (
-    <Fragment>
-      <Head>
-        <title>Poke-dexA</title>
-        <meta name="description" content="Poke dex app" />
-        <link rel="icon" href="/snorlax.ico" />
-      </Head>
-      {pokemonsImages && <Dashboard images={pokemonsImages} />}
-    </Fragment>
-  )
+  return <Fragment>{pokemonsImages && <Dashboard images={pokemonsImages} />}</Fragment>
 }
 
 export const getStaticProps: GetStaticProps = async () => {
