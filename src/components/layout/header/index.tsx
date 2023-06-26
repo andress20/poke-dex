@@ -13,7 +13,7 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <MenuItem>
-            <Link href="/">Dashboard</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </MenuItem>
           <MenuItem>
             <Link href="/allPokemons">All Pokemons</Link>
