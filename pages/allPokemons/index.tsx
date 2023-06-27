@@ -6,11 +6,12 @@ import PokemonCard from '@comp/molecules/card'
 
 function AllPokemons() {
   const [page, setPage] = useState(0)
+
   const { data: images, isLoading } = useQuery({
     queryKey: ['allPokemonsList', page],
     queryFn: () => getAllPokemons(page),
-    staleTime: 2000,
-    keepPreviousData: true,
+    staleTime: 60 * 1_0000,
+    keepPreviousData: true, // instead of showing loading spinner this keeps previous data until the new one is ready to be shown
   })
 
   const queryClient = useQueryClient()
@@ -22,7 +23,7 @@ function AllPokemons() {
     }
   }, [images?.next, page, queryClient])
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <div>Loading...</div> // with keepPreviousData option set to true, this not has effect
 
   return (
     <Fragment>
