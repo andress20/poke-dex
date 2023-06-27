@@ -3,4 +3,5 @@ export interface IConfig {
   defaultImage: string | undefined
   pokemonApi: string | undefined
   pokemonTypesApi: string | undefined
+  apiLimitUrlParameter: number | undefined
 }

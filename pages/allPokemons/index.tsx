@@ -11,7 +11,7 @@ function AllPokemons() {
     queryKey: ['allPokemonsList', page],
     queryFn: () => getAllPokemons(page),
     staleTime: 60 * 1_0000,
-    keepPreviousData: true, // instead of showing loading spinner this keeps previous data until the new one is ready to be shown
+    keepPreviousData: true, // instead of showing a loading spinner, this shows previous data until the new one is ready to be shown
   })
 
   const queryClient = useQueryClient()
@@ -32,10 +32,13 @@ function AllPokemons() {
       <div>List all pokemons </div>
       <div>List all pokemons </div>
       <div>
-        {images &&
+        {images.pokemons.length ? (
           images.pokemons.map((image: PokemonUrl) => (
             <PokemonCard key={image.name} title={image.name} image={image.url} />
-          ))}
+          ))
+        ) : (
+          <div>Data not found</div>
+        )}
       </div>
       <button onClick={() => setPage(prev => prev - 1)} disabled={!images.previous}>
         previous

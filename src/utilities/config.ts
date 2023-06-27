@@ -5,4 +5,5 @@ export const config: IConfig = {
   defaultImage: process.env.DEFAULT_IMAGE,
   pokemonApi: process.env.POKEMON_API_URL,
   pokemonTypesApi: process.env.POKEMON_TYPES_API_URL,
+  apiLimitUrlParameter: process.env.API_LIMIT_URL_PARAMETER ? parseInt(process.env.API_LIMIT_URL_PARAMETER) : 12,
 }
