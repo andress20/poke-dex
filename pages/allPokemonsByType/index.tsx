@@ -19,10 +19,9 @@ function PokemonsByType() {
 
   const mutation = useMutation({
     mutationFn: () => getPokemonsByType(data, listTypes),
-    onSuccess(data) {
+    onSuccess(data: string[]) {
       ;(async function handlerImages() {
         if (data) {
-          console.log('data', data)
           const images = await getPokemonsImages([...new Set(data)])
           setImages(images)
         }
@@ -39,7 +38,7 @@ function PokemonsByType() {
 
   // const {
   //   data: listNamesPokemonsChecked,
-  //   isLoading: isLoadingListPokemonsChecked,
+  //   isFetching,
   //   refetch: refetchListNamesChecked,
   // } = useQuery({
   //   // eslint-disable-next-line @tanstack/query/exhaustive-deps
@@ -53,7 +52,7 @@ function PokemonsByType() {
   // useEffect(() => {
   //   ;(async function handlerImages() {
   //     if (listNamesPokemonsChecked) {
-  //       const images = await getPokemonsImages(listNamesPokemonsChecked)
+  //       const images = await getPokemonsImages([...new Set(listNamesPokemonsChecked)])
   //       setImages(images)
   //     }
   //   })()
@@ -66,8 +65,9 @@ function PokemonsByType() {
     <Fragment>
       {data && <h1>Types</h1>}
       {mutation.isLoading && <span> Loading images...</span>}
+      {/* {isFetching && <span> Loading images...</span>} */}
       <PokemonTypePicker pokemonTypes={transformToPokemonTypeNames(data)} setListTypes={setListTypes} />
-      {/*<button onClick={() => refetchListNamesChecked()}>Apply filter</button> //query impelementation*/}
+      {/* <button onClick={() => refetchListNamesChecked()}>Apply filter</button> */}
       <button onClick={() => mutation.mutate()}>Apply filter</button>
       <div>
         {images &&
