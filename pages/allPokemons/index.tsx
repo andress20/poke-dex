@@ -27,10 +27,6 @@ function AllPokemons() {
 
   return (
     <Fragment>
-      {/* TODO: fix because menu bar is overlapping content  */}
-      <div>List all pokemons </div>
-      <div>List all pokemons </div>
-      <div>List all pokemons </div>
       <div>
         {images.pokemons.length ? (
           images.pokemons.map((image: PokemonUrl) => (

@@ -7,7 +7,7 @@ import style from './header.module.css'
 const Header = () => {
   return (
     <Fragment>
-      <AppBar>
+      <AppBar className={style.appBar} position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
             <MenuIcon />

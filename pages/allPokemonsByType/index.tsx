@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { getPokemonsByType, getAllPokemonTypes } from '@services/services'
 import PokemonTypePicker from '@comp/molecules/typePicker'
 import { PokemonUrl } from '@def/IPokemon'
@@ -14,7 +14,7 @@ function PokemonsByType() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['PokemonsByTypes'],
     queryFn: getAllPokemonTypes,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 5 * 60 * 1_000,
   })
 
   const {
@@ -22,9 +22,11 @@ function PokemonsByType() {
     isLoading: isLoadingListPokemonsChecked,
     refetch: refetchListNamesChecked,
   } = useQuery({
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
     queryKey: ['PokemonsListNamesByTypes', ...listTypes], // al ponerle aca el listTypes se actualiza apenas doy click en un checkbox sin esperar al boton
     queryFn: () => getPokemonsByType(data, listTypes),
     enabled: false,
+    staleTime: 5 * 60 * 1_000,
   })
 
   // TODO: Try to transform this handler to sumbit format in a form. Maybe is a better practice
@@ -37,15 +39,13 @@ function PokemonsByType() {
     })()
   }, [listNamesPokemonsChecked])
 
-  if (isLoading) return <span>Is Loading...</span>
+  if (isLoading) return <span>Is Loading List of types...</span>
+
   if (isError) return <span>Something went wrong...</span>
 
   return (
     <Fragment>
-      <div>pokemons by type</div>
-      <div>pokemons by type</div>
-      <div>pokemons by type</div>
-      {data && <div>andres</div>}
+      {data && <h1>Types</h1>}
       <PokemonTypePicker pokemonTypes={transformToPokemonTypeNames(data)} setListTypes={setListTypes} />
       <button onClick={() => refetchListNamesChecked()}>Apply filter</button>
       {/* //TODO: el key se esta repitiendo cuando un mismo pokemon esta en varios grupos a la vez como fuego y volador */}
