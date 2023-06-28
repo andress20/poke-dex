@@ -10,7 +10,7 @@ function AllPokemons() {
   const { data: images, isLoading } = useQuery({
     queryKey: ['allPokemonsList', page],
     queryFn: () => getAllPokemons(page),
-    staleTime: 60 * 1_0000,
+    staleTime: 60 * 1_000,
     keepPreviousData: true, // instead of showing a loading spinner, this shows previous data until the new one is ready to be shown
   })
 

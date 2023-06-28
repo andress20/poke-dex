@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
 
 function AllPokemonsScroll() {
-  const { data, fetchNextPage, hasNextPage, remove } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, remove, isLoading, isFetching, isError, error } = useInfiniteQuery({
     queryKey: ['AllPokemonsScroll'],
     queryFn: ({ pageParam = 0 }) => getAllPokemons(pageParam),
     getNextPageParam: (lastPage: GeneralResult) => {
@@ -26,23 +26,22 @@ function AllPokemonsScroll() {
     () =>
       data?.pages.reduce((prev, page) => {
         return {
-          results: [{ name: '', url: '' }],
+          results: [],
           pokemons: [...prev.pokemons, ...page.pokemons],
         }
       }),
-
     [data]
   )
 
-  console.log('pokemonsCount:', pokemonsCount)
-  //   if (isLoading) return <div>Loading...</div>
-  //   if (isError) return <div>{`Error ${error}`}</div>
+  if (isLoading) return <div style={{ position: 'absolute', top: '200px', right: '0' }}>Loading...</div>
+  if (isError) return <div style={{ position: 'absolute', top: '200px', right: '0' }}>{`Error ${error}`}</div>
 
   return (
     <Fragment>
       <div>hola</div>
       <div>hola</div>
       <div>hola</div>
+      {isFetching && <div style={{ position: 'fixed', top: '200px', right: '0' }}>Fething...</div>}
       <InfiniteScroll
         dataLength={pokemonsCount ? pokemonsCount.pokemons.length : 0}
         next={fetchNextPage}
