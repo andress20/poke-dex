@@ -5,14 +5,15 @@ import PokemonTypePicker from '@comp/molecules/typePicker'
 import { PokemonUrl } from '@def/IPokemon'
 import { getPokemonsImages } from '../../src/services/services'
 import PokemonCard from '@comp/molecules/card'
-import { transformToPokemonTypeNames } from 'pages/transforms'
+import { transformToPokemonTypeNames } from '@util/transforms'
+import { queryKeys } from '@util/queryKeys'
 
 function PokemonsByType() {
   const [listTypes, setListTypes] = useState<string[]>([])
   const [images, setImages] = useState<PokemonUrl[]>()
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['PokemonsByTypes'],
+    queryKey: [queryKeys.pokemonsByTypes],
     queryFn: getAllPokemonTypes,
     staleTime: 5 * 60 * 1_000,
   })

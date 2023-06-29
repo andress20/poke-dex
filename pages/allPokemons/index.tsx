@@ -3,12 +3,13 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getAllPokemons } from '../../src/services/services'
 import { PokemonUrl } from '@def/IPokemon'
 import PokemonCard from '@comp/molecules/card'
+import { queryKeys } from '@util/queryKeys'
 
 function AllPokemons() {
   const [page, setPage] = useState(0)
 
   const { data: images, isLoading } = useQuery({
-    queryKey: ['allPokemonsList', page],
+    queryKey: [queryKeys.allPokemonsList, page],
     queryFn: () => getAllPokemons(page),
     staleTime: 60 * 1_000,
     keepPreviousData: true, // instead of showing a loading spinner, this shows previous data until the new one is ready to be shown
@@ -19,7 +20,7 @@ function AllPokemons() {
   useEffect(() => {
     if (images?.next) {
       const nextPage = page + 1
-      queryClient.prefetchQuery(['allPokemonsList', nextPage], () => getAllPokemons(nextPage))
+      queryClient.prefetchQuery([queryKeys.allPokemonsList, nextPage], () => getAllPokemons(nextPage))
     }
   }, [images?.next, page, queryClient])
 

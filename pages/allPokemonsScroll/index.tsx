@@ -4,10 +4,10 @@ import { getAllPokemons } from '../../src/services/services'
 import { GeneralResult } from '@def/IGeneralResult'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
-
+import { queryKeys } from '@util/queryKeys'
 function AllPokemonsScroll() {
   const { data, fetchNextPage, hasNextPage, remove, isLoading, isFetching, isError, error } = useInfiniteQuery({
-    queryKey: ['AllPokemonsScroll'],
+    queryKey: [queryKeys.allPokemonsScroll],
     queryFn: ({ pageParam = 0 }) => getAllPokemons(pageParam),
     getNextPageParam: (lastPage: GeneralResult) => {
       if (!lastPage.next) return false
@@ -38,9 +38,6 @@ function AllPokemonsScroll() {
 
   return (
     <Fragment>
-      <div>hola</div>
-      <div>hola</div>
-      <div>hola</div>
       {isFetching && <div style={{ position: 'fixed', top: '200px', right: '0' }}>Fething...</div>}
       <InfiniteScroll
         dataLength={pokemonsCount ? pokemonsCount.pokemons.length : 0}
