@@ -6,6 +6,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '@theme/index'
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { Fetching } from '@comp/atoms/spinners'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         defaultOptions: {
           queries: {
             // cacheTime: 3000, Just and example (default cacheTime 5 minutes)
-            refetchOnWindowFocus: false,
+            // refetchOnWindowFocus: false,
           },
         },
       })
@@ -30,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
+            <Fetching />
             <Component {...pageProps} />
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />

@@ -7,6 +7,7 @@ import { getPokemonsImages } from '../../src/services/services'
 import PokemonCard from '@comp/molecules/card'
 import { transformToPokemonTypeNames } from '@util/transforms'
 import { queryKeys } from '@util/queryKeys'
+import { Loading } from '@comp/atoms/spinners'
 
 function PokemonsByType() {
   const [listTypes, setListTypes] = useState<string[]>([])
@@ -59,13 +60,13 @@ function PokemonsByType() {
   //   })()
   // }, [listNamesPokemonsChecked])
 
-  if (isLoading) return <span>Is Loading List of types...</span>
+  if (isLoading) return <Loading />
   if (isError) return <span>Something went wrong...</span>
 
   return (
     <Fragment>
       {data && <h1>Types</h1>}
-      {mutation.isLoading && <span> Loading images...</span>}
+      {mutation.isLoading && <Loading />}
       {/* {isFetching && <span> Loading images...</span>} */}
       <PokemonTypePicker pokemonTypes={transformToPokemonTypeNames(data)} setListTypes={setListTypes} />
       {/* <button onClick={() => refetchListNamesChecked()}>Apply filter</button> */}

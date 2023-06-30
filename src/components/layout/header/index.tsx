@@ -16,7 +16,7 @@ const Header = () => {
             <Link href="/dashboard">Dashboard</Link>
           </MenuItem>
           <MenuItem>
-            <Link href="/allPokemons">All Pokemons</Link>
+            <Link href="/allPokemonsPagination">All Pokemons Pagination</Link>
           </MenuItem>
           <MenuItem>
             <Link href="/allPokemonsScroll">All Pokemons Scroll</Link>

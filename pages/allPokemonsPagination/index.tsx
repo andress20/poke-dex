@@ -5,7 +5,7 @@ import { PokemonUrl } from '@def/IPokemon'
 import PokemonCard from '@comp/molecules/card'
 import { queryKeys } from '@util/queryKeys'
 
-function AllPokemons() {
+function AllPokemonsPagination() {
   const [page, setPage] = useState(0)
 
   const { data: images, isLoading } = useQuery({
@@ -47,4 +47,4 @@ function AllPokemons() {
   )
 }
 
-export default AllPokemons
+export default AllPokemonsPagination
