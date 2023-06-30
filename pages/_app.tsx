@@ -28,15 +28,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Poke-dexApp</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Layout>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <Fetching />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Fetching />
+          <Layout>
             <Component {...pageProps} />
-          </Hydrate>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </Layout>
+          </Layout>
+        </Hydrate>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </ThemeProvider>
   )
 }
