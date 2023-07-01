@@ -6,7 +6,7 @@ import { PokemonUrl } from '@def/IPokemon'
 import { getPokemonsImages } from '../../src/services/services'
 import PokemonCard from '@comp/molecules/card'
 import { transformToPokemonTypeNames } from '@util/transforms'
-import { queryKeys } from '@util/queryKeys'
+import { queryKeys } from '@util/tanstackQuery/queryKeys'
 import { Loading } from '@comp/atoms/spinners'
 
 function PokemonsByType() {

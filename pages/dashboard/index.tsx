@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { getPokemonsImages } from '@services/services'
 import Dashboard from '@comp/organisms/dashboard'
 import { useQuery, QueryClient, dehydrate } from '@tanstack/react-query'
-import { queryKeys } from '@util/queryKeys'
+import { queryKeys } from '@util/tanstackQuery/queryKeys'
 const pokemonsList = ['charmander', 'squirtle', 'bulbasaur', 'pikachu']
 
 const DashboardHome: NextPage = () => {

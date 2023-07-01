@@ -4,7 +4,8 @@ import { getAllPokemons } from '../../src/services/services'
 import { GeneralResult } from '@def/IGeneralResult'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
-import { queryKeys } from '@util/queryKeys'
+import { queryKeys } from '@util/tanstackQuery/queryKeys'
+
 function AllPokemonsScroll() {
   const { data, fetchNextPage, hasNextPage, remove, isLoading, isFetching, isError, error } = useInfiniteQuery({
     queryKey: [queryKeys.allPokemonsScroll],

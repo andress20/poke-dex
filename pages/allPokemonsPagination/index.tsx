@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getAllPokemons } from '../../src/services/services'
 import { PokemonUrl } from '@def/IPokemon'
 import PokemonCard from '@comp/molecules/card'
-import { queryKeys } from '@util/queryKeys'
+import { queryKeys } from '@util/tanstackQuery/queryKeys'
 
 function AllPokemonsPagination() {
   const [page, setPage] = useState(0)
