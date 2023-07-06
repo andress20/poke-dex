@@ -8,7 +8,7 @@ import { queryKeys } from '@util/tanstackQuery/queryKeys'
 function AllPokemonsPagination() {
   const [page, setPage] = useState(0)
 
-  const { data: images, isLoading } = useQuery({
+  const { data: images = [], isLoading } = useQuery({
     queryKey: [queryKeys.allPokemonsList, page],
     queryFn: () => getAllPokemons(page),
     staleTime: 60 * 1_000,
@@ -24,12 +24,12 @@ function AllPokemonsPagination() {
     }
   }, [images?.next, page, queryClient])
 
-  if (isLoading) return <div>Loading...</div> // with keepPreviousData option set to true, this not has effect
+  if (isLoading) return <div>Loading...</div> // with keepPreviousData option set to true, this has no effect
 
   return (
     <Fragment>
       <div>
-        {images.pokemons.length ? (
+        {images.pokemons?.length ? (
           images.pokemons.map((image: PokemonUrl) => (
             <PokemonCard key={image.name} title={image.name} image={image.url} />
           ))
