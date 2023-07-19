@@ -1,5 +1,7 @@
+import Login from '../login'
+
 const Pokemon = () => {
-  return <div>Specific Pokemon Page</div>
+  return <Login />
 }
 
 export default Pokemon
