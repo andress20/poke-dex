@@ -1,6 +1,20 @@
 import { GeneralResult } from '@def/IGeneralResult'
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@util/config'
+import { User } from '@def/IUser'
+import bcrypt from 'bcryptjs'
+
+export const createUser = async (user: User) => {
+  if (!user.password) return null
+  const passwordEncrypted = bcrypt.hashSync(user?.password, bcrypt.genSaltSync())
+  user.password = passwordEncrypted
+  const response = await fetch(`${config.siteUrl}/api/user/createUser`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(user),
+  })
+  if (response.ok) return user
+}
 
 export const getAllPokemons = async (page: number) => {
   const response = await fetch(`${config.siteUrl}/api/AllPokemons`, {

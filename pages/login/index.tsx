@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import { NextPage } from 'next'
-import LoginForm from '@comp/molecules/form'
+import LoginForm from '@comp/molecules/form/login'
 
 const Login: NextPage = () => {
   return (
