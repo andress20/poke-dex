@@ -1,5 +1,13 @@
 .appBar {
-  margin-bottom: '200px';
-  text-align: center;
+  /* margin-bottom: '200px'; */
+  /* text-align: center; */
 }
-/* doesnt work */
+
+.userLoginSection {
+  display: flex;
+  justify-content: space-around;
+}
+
+.userText {
+  padding: 10px;
+}

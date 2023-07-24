@@ -26,8 +26,11 @@ const LoginForm: React.FC = (): JSX.Element => {
   async function submitUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault() // not using at all
     const createdUser = await createUser(user)
-    localStorage.setItem(`pokemonUser_${user.name}`, JSON.stringify(createdUser))
-    router.push('/dashboard')
+    if (createdUser) {
+      localStorage.setItem(`pokemonUser_${user.name}`, JSON.stringify(createdUser))
+      router.push('/dashboard')
+    }
+    return window.alert('password required')
   }
 
   return (
