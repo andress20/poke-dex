@@ -1,10 +1,12 @@
 import { AppBar, IconButton, MenuItem, Toolbar, Typography } from '@mui/material'
+import { Fragment, useContext } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
-import { Fragment } from 'react'
 import Link from 'next/link'
+import UserContext from '@context'
 import style from './header.module.css'
 
 const Header = () => {
+  const currentuser = useContext(UserContext)
   return (
     <Fragment>
       <AppBar className={style.appBar} position="static">
@@ -13,6 +15,9 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Toolbar variant="dense">
+            <MenuItem>
+              <Link href="/login">Login</Link>
+            </MenuItem>
             <MenuItem>
               <Link href="/dashboard">Dashboard</Link>
             </MenuItem>
@@ -30,7 +35,7 @@ const Header = () => {
             </MenuItem>
           </Toolbar>
           <Typography className={style.userText} variant="h6">
-            h1. Heading
+            {currentuser.name}
           </Typography>
         </section>
       </AppBar>

@@ -10,6 +10,7 @@
       "@def/*": ["src/types/*"],
       "@services/*": ["src/services/*"],
       "@hooks": ["src/hooks"],
+      "@context": ["src/context"],
       "@customTypes/*": ["src/types/*"],
       "@redux/*": ["src/redux/*"],
       "@theme/*": ["src/themes/*"],

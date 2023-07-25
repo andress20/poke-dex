@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Fetching } from '@comp/atoms/spinners'
 import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
+import { UserContext } from '@context'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { openToast, setOpenToast, handleCloseToast } = useToast()
@@ -28,10 +29,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <Fetching />
-          <Layout>
-            <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-            <Component {...pageProps} />
-          </Layout>
+          <UserContext>
+            <Layout>
+              <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+              <Component {...pageProps} />
+            </Layout>
+          </UserContext>
         </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
