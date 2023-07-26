@@ -1,7 +1,7 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField'
 
-const InputTextFiled: React.FC<TextFieldProps> = ({ id, name, label, variant = 'outlined', onChange }) => (
-  <TextField margin="dense" id={id} name={name} label={label} variant={variant} onChange={onChange} />
-)
+const InputTextFiled: React.FC<TextFieldProps> = ({ variant = 'outlined', ...props }) => {
+  return <TextField margin="dense" variant={variant} {...props} />
+}
 
 export default InputTextFiled
