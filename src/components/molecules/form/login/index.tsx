@@ -7,6 +7,7 @@ import { createUser } from '@services/services'
 import { useRouter } from 'next/router'
 import UserContext from '@context'
 import { User } from '@def/IUser'
+import Cookies from 'js-cookie'
 
 const LoginForm: React.FC = (): JSX.Element => {
   const [user, setUser] = useState<User>({ name: '', password: '', likes: [''] })
@@ -56,7 +57,7 @@ const LoginForm: React.FC = (): JSX.Element => {
     if (!user.password) return window.alert('password required')
     const createdUser = await createUser(user)
     if (createdUser) {
-      localStorage.setItem(`pokemonUser_${currentUser.name}`, JSON.stringify(createdUser))
+      Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
       currentUser.dispatchUser({ ...currentUser, name: user.name })
       router.push('/dashboard')
     }
