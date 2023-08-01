@@ -5,7 +5,7 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: { main: red[900] },
-    secondary: yellow,
+    secondary: { main: yellow[500] },
   },
   components: {
     // Name of the component

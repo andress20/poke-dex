@@ -18,18 +18,27 @@ const LoginForm: React.FC = (): JSX.Element => {
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('click down ')
     setShowPassword(true)
   }
   const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    console.log('click up ')
     setShowPassword(false)
   }
 
   function hadleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
     setUser(user => ({ ...user, [name]: value }))
+  }
+
+  async function submitUser(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault() // not using at all
+    if (!user.password) return window.alert('password required')
+    const createdUser = await createUser(user)
+    if (createdUser) {
+      Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
+      currentUser.dispatchUser({ ...currentUser, name: user.name })
+      router.push('/dashboard')
+    }
   }
 
   const IconPassword = () => (
@@ -50,17 +59,6 @@ const LoginForm: React.FC = (): JSX.Element => {
         <IconPassword />
       </InputAdornment>
     ),
-  }
-
-  async function submitUser(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault() // not using at all
-    if (!user.password) return window.alert('password required')
-    const createdUser = await createUser(user)
-    if (createdUser) {
-      Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
-      currentUser.dispatchUser({ ...currentUser, name: user.name })
-      router.push('/dashboard')
-    }
   }
 
   return (

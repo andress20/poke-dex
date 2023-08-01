@@ -9,6 +9,7 @@ import { Fetching } from '@comp/atoms/spinners'
 import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
 import { UserContext } from '@context'
+import { Fragment } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { openToast, setOpenToast, handleCloseToast } = useToast()
@@ -20,25 +21,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useInitialQueryClient(setOpenToast)
 
   return (
-    <ThemeProvider theme={themes[Themes.lightTheme]}>
-      <CssBaseline />
+    <Fragment>
       <Head>
         <title>Poke-dexApp</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <Fetching />
-          <UserContext>
-            <Layout>
-              <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-              <Component {...pageProps} />
-            </Layout>
-          </UserContext>
-        </Hydrate>
+        <ThemeProvider theme={themes[Themes.lightTheme]}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <Fetching />
+            <CssBaseline />
+            <UserContext>
+              <Layout>
+                <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+                <Component {...pageProps} />
+              </Layout>
+            </UserContext>
+          </Hydrate>
+        </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </ThemeProvider>
+    </Fragment>
   )
 }
 
