@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react'
 import { User } from '@def/IUser'
+import { UserActions, userActionTypes } from './types'
 
 interface ComponentProps {
   children: React.ReactNode
@@ -8,10 +9,9 @@ interface ComponentProps {
 // Initial state of the context
 const CurrentUserContext = createContext({
   name: '',
-  password: '',
   likes: [''],
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  dispatchUser: (user: User) => {},
+  userDispatch: ({ type, payload }: UserActions): void => {},
 })
 
 CurrentUserContext.displayName = 'My user context' // "Myusercontext.Provider" name in devtools
@@ -19,23 +19,42 @@ CurrentUserContext.displayName = 'My user context' // "Myusercontext.Provider" n
 /**
  * @param ReactNode (children)
  * @returns
- * This component is in charge of save and manteing the user context (state and functions)
+ * This component is in charge of save and maintain the user context (state and functions)
+ * This is used as a wrapper into _app
  */
 export const UserContext: React.FC<ComponentProps> = ({ children }): JSX.Element => {
-  const reducer = (state: User, action: User) => ({ ...state, ...action })
+  const reducer = (state: User, action: UserActions): User => {
+    switch (action.type) {
+      case userActionTypes.updateName:
+        return { ...state, name: action.payload }
+        break
+      case userActionTypes.updateLikes:
+        return { ...state, likes: [...state.likes, action.payload] }
+        break
+      default:
+        return state
+        break
+    }
+  }
 
   const [user, dispatchUser] = useReducer(reducer, {
     name: '',
-    password: '',
-    likes: [''],
+    likes: [],
   })
 
   /**
-   * "value" prop of UserContextInitialState.Provider needs the same type of UserContextInitialState
+   * Was necessary wrapp dispatchUser into userDispatch because types conflict
+   * the type of dispatchUser is kind of weird to stablish the solution was wrapping into a new function
+   * in order to force the type () =void instead of React.Dispatch<SetStateAction<Sring>> or something similar
+   */
+  const userDispatch = ({ type, payload }: UserActions) => dispatchUser({ type, payload })
+
+  const context = { ...user, userDispatch }
+
+  /**
+   * prop "value" of CurrentUserContext.Provider needs the same type of createContext props
    * that's why we need to build that type with the state and functions int "context" variable
    **/
-  const context = { ...user, dispatchUser }
-
   return <CurrentUserContext.Provider value={context}>{children}</CurrentUserContext.Provider>
 }
 

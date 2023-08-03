@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close'
 import { IToastProps } from '@customTypes/IToast'
 import { Alert } from '@mui/material'
 
+// TODO: add documentation for this component
+
 const Toast: React.FC<IToastProps> = ({ message, open, close, severity }) => {
   const action = (
     <Fragment>

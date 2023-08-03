@@ -6,11 +6,11 @@ import styles from './form.module.css'
 import { createUser } from '@services/services'
 import { useRouter } from 'next/router'
 import UserContext from '@context'
-import { User } from '@def/IUser'
 import Cookies from 'js-cookie'
+import { userActionTypes } from '@src/context/types'
 
 const LoginForm: React.FC = (): JSX.Element => {
-  const [user, setUser] = useState<User>({ name: '', password: '', likes: [''] })
+  const [user, setUser] = useState({ name: '', password: '', likes: [''] })
   const [showPassword, setShowPassword] = useState(false)
 
   const router = useRouter()
@@ -36,7 +36,7 @@ const LoginForm: React.FC = (): JSX.Element => {
     const createdUser = await createUser(user)
     if (createdUser) {
       Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
-      currentUser.dispatchUser({ ...currentUser, name: user.name })
+      currentUser.userDispatch({ type: userActionTypes.updateName, payload: user.name })
       router.push('/dashboard')
     }
   }
@@ -63,7 +63,7 @@ const LoginForm: React.FC = (): JSX.Element => {
 
   return (
     <Box className={styles.loginForm}>
-      <form onSubmit={submitUser}>
+      <form onSubmit={e => submitUser(e)}>
         <FormControl>
           <FormGroup>
             <InputTextField
