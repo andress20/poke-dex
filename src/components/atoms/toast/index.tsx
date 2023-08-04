@@ -3,7 +3,7 @@ import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import { IToastProps } from '@customTypes/IToast'
-import { Alert } from '@mui/material'
+import { Alert, AlertTitle } from '@mui/material'
 
 // TODO: add documentation for this component
 
@@ -27,6 +27,7 @@ const Toast: React.FC<IToastProps> = ({ message, open, close, severity }) => {
         action={action}
       >
         <Alert onClose={close} severity={severity} sx={{ width: '100%' }}>
+          <AlertTitle>{severity}</AlertTitle>
           {message}
         </Alert>
       </Snackbar>

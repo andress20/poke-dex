@@ -1,6 +1,7 @@
-import { Box } from '@mui/material'
+import { Backdrop, Box } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { useIsFetching } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 /**
  *
@@ -8,36 +9,52 @@ import { useIsFetching } from '@tanstack/react-query'
  */
 export function Fetching(): JSX.Element {
   const isfetching = useIsFetching()
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setPath(window?.location.href.split('/').pop() || '')
+    }
+  }, [isfetching])
 
   const display = isfetching ? 'inherit' : 'none'
 
   return (
-    <Box
-      sx={{
-        displayPrint: { display },
-        zIndex: '99',
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50% )',
-      }}
+    <Backdrop
+      sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+      open={!!isfetching}
+      invisible={path === 'allPokemonsScroll'}
     >
-      <CircularProgress />
-    </Box>
+      <Box
+        sx={{
+          displayPrint: { display },
+          zIndex: '99',
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50% )',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    </Backdrop>
   )
 }
 export function Loading(): JSX.Element {
+  const isfetching = useIsFetching()
   return (
-    <Box
-      sx={{
-        zIndex: '99',
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50% )',
-      }}
-    >
-      <CircularProgress />
-    </Box>
+    <Backdrop sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }} open={!!isfetching}>
+      <Box
+        sx={{
+          zIndex: '99',
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50% )',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    </Backdrop>
   )
 }

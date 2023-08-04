@@ -12,14 +12,13 @@ import { userActionTypes } from '@src/context/types'
 const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   const classes = useStyles()
   const user = useContext(UserContext)
-  const { openToast, handleOpenToast, handleCloseToast } = useToast()
+  const { message, severity, openToast, handleOpenToast, handleCloseToast } = useToast()
 
   function handlerClick() {
     if (!user.name) {
-      handleOpenToast()
+      handleOpenToast('You must be logged in', 'warning')
     } else {
       user.userDispatch({ type: userActionTypes.updateLikes, payload: title })
-      alert('like agregado')
     }
   }
 
@@ -44,7 +43,7 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
           </Button>
         </CardActions>
       </Card>
-      {<Toast message="You must to be logged in" open={openToast} close={handleCloseToast} severity="info" />}
+      {<Toast message={message} open={openToast} close={handleCloseToast} severity={severity} />}
     </Fragment>
   )
 }

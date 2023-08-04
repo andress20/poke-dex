@@ -8,6 +8,8 @@ import { useRouter } from 'next/router'
 import UserContext from '@context'
 import Cookies from 'js-cookie'
 import { userActionTypes } from '@src/context/types'
+import Toast from '@atoms/toast'
+import { useToast } from '@hooks'
 
 const LoginForm: React.FC = (): JSX.Element => {
   const [user, setUser] = useState({ name: '', password: '', likes: [''] })
@@ -15,6 +17,7 @@ const LoginForm: React.FC = (): JSX.Element => {
 
   const router = useRouter()
   const currentUser = useContext(UserContext)
+  const { message, severity, openToast, handleOpenToast, handleCloseToast } = useToast()
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -32,7 +35,14 @@ const LoginForm: React.FC = (): JSX.Element => {
 
   async function submitUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault() // not using at all
-    if (!user.password) return window.alert('password required')
+    if (!user.name) {
+      handleOpenToast('User Name is required', 'info')
+      return
+    }
+    if (!user.password) {
+      handleOpenToast('Password is required', 'info')
+      return
+    }
     const createdUser = await createUser(user)
     if (createdUser) {
       Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
@@ -97,6 +107,7 @@ const LoginForm: React.FC = (): JSX.Element => {
           </FormGroup>
         </FormControl>
       </form>
+      <Toast message={message} open={openToast} close={handleCloseToast} severity={severity} />
     </Box>
   )
 }
