@@ -18,7 +18,12 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
     if (!user.name) {
       handleOpenToast('You must be logged in', 'warning')
     } else {
-      user.userDispatch({ type: userActionTypes.updateLikes, payload: title })
+      if (user.likes.includes(title)) {
+        user.userDispatch({ type: userActionTypes.substractLikes, payload: title })
+        return
+      } else {
+        user.userDispatch({ type: userActionTypes.addLikes, payload: title })
+      }
     }
   }
 

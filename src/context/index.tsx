@@ -28,9 +28,11 @@ export const UserContext: React.FC<ComponentProps> = ({ children }): JSX.Element
       case userActionTypes.updateName:
         return { ...state, name: action.payload }
         break
-      case userActionTypes.updateLikes:
+      case userActionTypes.addLikes:
         return { ...state, likes: [...state.likes, action.payload] }
         break
+      case userActionTypes.substractLikes:
+        return { ...state, likes: [...state.likes.filter(pokemon => pokemon !== action.payload)] }
       default:
         return state
         break

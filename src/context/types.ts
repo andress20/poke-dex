@@ -1,6 +1,7 @@
 export enum userActionTypes {
   updateName = 'UPDATE_NAME',
-  updateLikes = 'UPDATE_LIKES',
+  addLikes = 'ADD_LIKES',
+  substractLikes = 'SUBSTRACT_LIKES',
 }
 export type UserActionsTypes = 'name' | 'likes'
 
