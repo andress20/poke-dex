@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import { IToastProps } from '@customTypes/IToast'
 import { Alert, AlertTitle } from '@mui/material'
-
+import Slide from '@mui/material/Slide'
 // TODO: add documentation for this component
 
 const Toast: React.FC<IToastProps> = ({ message, open, close, severity }) => {
@@ -25,6 +25,7 @@ const Toast: React.FC<IToastProps> = ({ message, open, close, severity }) => {
         onClose={close}
         // message={message} // Alert tag overrides this prop
         action={action}
+        TransitionComponent={Slide}
       >
         <Alert onClose={close} severity={severity} sx={{ width: '100%' }}>
           <AlertTitle>{severity}</AlertTitle>

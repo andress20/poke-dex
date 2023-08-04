@@ -10,6 +10,7 @@ import Cookies from 'js-cookie'
 import { userActionTypes } from '@src/context/types'
 import Toast from '@atoms/toast'
 import { useToast } from '@hooks'
+import { enqueueSnackbar } from 'notistack'
 
 const LoginForm: React.FC = (): JSX.Element => {
   const [user, setUser] = useState({ name: '', password: '', likes: [''] })
@@ -36,7 +37,10 @@ const LoginForm: React.FC = (): JSX.Element => {
   async function submitUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault() // not using at all
     if (!user.name) {
-      handleOpenToast('User Name is required', 'info')
+      // with notistack
+      enqueueSnackbar('User Name is required', { variant: 'info' })
+      //with MUI toast
+      //handleOpenToast('User Name is required', 'info')
       return
     }
     if (!user.password) {

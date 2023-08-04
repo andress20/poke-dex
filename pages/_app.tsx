@@ -10,6 +10,7 @@ import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
 import { UserContext } from '@context'
 import { Fragment } from 'react'
+import { SnackbarProvider } from 'notistack'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { openToast, setOpenToast, handleCloseToast } = useToast()
@@ -29,14 +30,16 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={themes[Themes.lightTheme]}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Fetching />
-            <CssBaseline />
-            <UserContext>
-              <Layout>
-                <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-                <Component {...pageProps} />
-              </Layout>
-            </UserContext>
+            <SnackbarProvider>
+              <Fetching />
+              <CssBaseline />
+              <UserContext>
+                <Layout>
+                  <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+                  <Component {...pageProps} />
+                </Layout>
+              </UserContext>
+            </SnackbarProvider>
           </Hydrate>
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />

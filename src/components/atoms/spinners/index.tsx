@@ -2,7 +2,6 @@ import { Backdrop, Box } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { useIsFetching } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
-
 /**
  *
  * @returns Shows up spinner ONLY when tanstack_query is fetching
