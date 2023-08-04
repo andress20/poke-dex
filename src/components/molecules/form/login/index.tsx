@@ -11,9 +11,10 @@ import { userActionTypes } from '@src/context/types'
 import Toast from '@atoms/toast'
 import { useToast } from '@hooks'
 import { enqueueSnackbar } from 'notistack'
+import { UserLogin } from '@def/IUser'
 
 const LoginForm: React.FC = (): JSX.Element => {
-  const [user, setUser] = useState({ name: '', password: '', likes: [''] })
+  const [user, setUser] = useState<UserLogin>({ name: '', password: '', likes: [''] })
   const [showPassword, setShowPassword] = useState(false)
 
   const router = useRouter()

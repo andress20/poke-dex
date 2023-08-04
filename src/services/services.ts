@@ -1,10 +1,10 @@
 import { GeneralResult } from '@def/IGeneralResult'
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@util/config'
-import { User } from '@def/IUser'
+import { UserLogin } from '@def/IUser'
 import bcrypt from 'bcryptjs'
 
-export const createUser = async (user: User) => {
+export const createUser = async (user: UserLogin) => {
   if (!user.password) return null
   const passwordEncrypted = bcrypt.hashSync(user?.password, bcrypt.genSaltSync())
   user.password = passwordEncrypted
