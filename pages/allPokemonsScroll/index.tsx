@@ -5,6 +5,7 @@ import { GeneralResult } from '@def/IGeneralResult'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
 import { queryKeys } from '@util/tanstackQuery/queryKeys'
+import CardsContainer from '@comp/atoms/cardsContainer'
 
 function AllPokemonsScroll() {
   const { data, fetchNextPage, hasNextPage, remove, isLoading, isFetching, isError, error } = useInfiniteQuery({
@@ -51,12 +52,14 @@ function AllPokemonsScroll() {
           </p>
         }
       >
-        {data &&
-          data.pages.map(pageData =>
-            pageData.pokemons.map(pokemon => {
-              return <PokemonCard key={pokemon.name} title={pokemon.name} image={pokemon.url} />
-            })
-          )}
+        <CardsContainer>
+          {data &&
+            data.pages.map(pageData =>
+              pageData.pokemons.map(pokemon => {
+                return <PokemonCard key={pokemon.name} title={pokemon.name} image={pokemon.url} />
+              })
+            )}
+        </CardsContainer>
       </InfiniteScroll>
     </Fragment>
   )

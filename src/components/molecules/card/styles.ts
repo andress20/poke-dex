@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => {
       borderRadius: '20px',
     },
     cardImage: {
-      backgroundPosition: '50%',
+      backgroundPosition: '55%',
       backgroundSize: '200%',
       backgroundImage: `url('${config.siteUrl}/pokemon-wallpaper.jpg')`,
       /* TODO - remove important */
@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme: Theme) => {
     cardActions: {
       display: 'flex',
       justifyContent: 'space-around',
+      margin: '0 10px',
+      padding: '0',
     },
     favoriteIcon: {
       color: theme.palette.primary.main,

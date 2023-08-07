@@ -2,18 +2,16 @@ import { Fragment } from 'react'
 import { PokemonsImages, PokemonUrl } from '@src/types/IPokemon'
 // TODO - el storybook no esta tomando los @def ts.config!!
 import PokemonCard from '../../molecules/card'
-import { PokemonButton } from '@atoms/button'
 import styles from './dashboard.module.css'
+import { Container } from '@mui/material'
 
 const Dashboard: React.FC<PokemonsImages> = ({ images }) => {
   return (
     <Fragment>
-      <h1>Dashboard</h1>
-      <PokemonButton label="clickk" />
-      <div className={styles.dashboard}>
+      <Container className={styles.dashboard} maxWidth="xl">
         {images &&
           images.map((image: PokemonUrl) => <PokemonCard key={image.name} title={image.name} image={image.url} />)}
-      </div>
+      </Container>
     </Fragment>
   )
 }

@@ -1,13 +1,4 @@
-.appBar {
-  /* margin-bottom: '200px'; */
-  /* text-align: center; */
-}
-
 .userLoginSection {
   display: flex;
   justify-content: space-around;
-}
-
-.userText {
-  padding: 10px;
 }

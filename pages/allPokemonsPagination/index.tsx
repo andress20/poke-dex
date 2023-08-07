@@ -4,6 +4,7 @@ import { getAllPokemons } from '../../src/services/services'
 import { PokemonUrl } from '@def/IPokemon'
 import PokemonCard from '@comp/molecules/card'
 import { queryKeys } from '@util/tanstackQuery/queryKeys'
+import CardsContainer from '@comp/atoms/cardsContainer'
 
 function AllPokemonsPagination() {
   const [page, setPage] = useState(0)
@@ -28,7 +29,7 @@ function AllPokemonsPagination() {
 
   return (
     <Fragment>
-      <div>
+      <CardsContainer>
         {images.pokemons?.length ? (
           images.pokemons.map((image: PokemonUrl) => (
             <PokemonCard key={image.name} title={image.name} image={image.url} />
@@ -36,7 +37,7 @@ function AllPokemonsPagination() {
         ) : (
           <div>Data not found</div>
         )}
-      </div>
+      </CardsContainer>
       <button onClick={() => setPage(prev => prev - 1)} disabled={!images.previous}>
         previous
       </button>

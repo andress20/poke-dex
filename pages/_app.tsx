@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Layout from '@comp/layout'
+import Layout from '@comp/layout/content'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '@theme/index'
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query'

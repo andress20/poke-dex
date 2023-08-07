@@ -3,9 +3,16 @@ import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@util/config'
 import { UserLogin } from '@def/IUser'
 import bcrypt from 'bcryptjs'
+import Cookies from 'js-cookie'
+import { enqueueSnackbar } from 'notistack'
 
 export const createUser = async (user: UserLogin) => {
-  if (!user.password) return null
+  const userExist = Cookies.get(`pokemonUser_${user.name}`)
+  if (userExist) {
+    enqueueSnackbar('usuario ya existe', { variant: 'warning' })
+    return null
+  }
+
   const passwordEncrypted = bcrypt.hashSync(user?.password, bcrypt.genSaltSync())
   user.password = passwordEncrypted
   const response = await fetch(`${config.siteUrl}/api/user/createUser`, {

@@ -30,15 +30,15 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   return (
     <Fragment>
       <Card className={classes.card} sx={{ maxWidth: 300, margin: '10px' }}>
-        <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="300" height="300" />
-        <CardContent>
-          <Typography className={classes.cardTitle} gutterBottom variant="h5" component="div">
+        {/* <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="250" height="280" /> */}
+        <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
+        <CardContent sx={{ padding: '0px' }}>
+          <Typography className={classes.cardTitle} variant="h5" component="div">
             {title}
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+          <Button size="small">More</Button>
           <Button onClick={handlerClick}>
             {user.likes.includes(title) ? (
               <Favorite className={classes.favoriteIcon} />
