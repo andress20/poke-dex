@@ -7,16 +7,9 @@ import { createStyles, makeStyles } from '@mui/styles'
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     layout: {
-      display: 'flex',
-      height: '100vh',
       '& .MuiContainer-maxWidthLg': {
-        maxWidth: 1380,
+        maxWidth: '100vw',
       },
-    },
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      // justifyContent: 'center',
     },
   })
 })

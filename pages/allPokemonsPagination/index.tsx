@@ -31,8 +31,12 @@ function AllPokemonsPagination() {
   return (
     <Box
       sx={{
-        display: 'grid',
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '100vw',
+        minHeight: '100vh',
         justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <CardsContainer>

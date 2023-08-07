@@ -6,10 +6,25 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
-    cardsContainer: {
+    toolBar: {
       display: 'flex',
-      alignItems: 'center',
       justifyContent: 'center',
+      '& .MuiButtonBase-root.MuiIconButton-root': {
+        position: 'fixed',
+        right: '200px',
+      },
+      // '& .MuiBox': {
+      //   display: 'flex',
+      // },
+    },
+    menuItems: {
+      display: 'flex',
+    },
+    toolTip: {
+      '& .MuiAvatar-root.MuiAvatar-circular': {
+        position: 'fixed',
+        right: '200px',
+      },
     },
   })
 })
