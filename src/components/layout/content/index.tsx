@@ -8,12 +8,12 @@ import useStyle from './styles'
 const Layout: React.FC<IPlainObject> = ({ children }) => {
   const classes = useStyle()
   return (
-    <Box className={classes.container}>
+    <Box className={classes.layout}>
       <Header />
       {/* 
       / other way to do it instead of parent Box classname ... 
       <Container maxWidth="xl" sx={{ marginTop: '60px' }}> */}
-      <Container>{children}</Container>
+      <Container className={classes.container}>{children}</Container>
       <Footer />
     </Box>
   )

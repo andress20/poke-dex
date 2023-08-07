@@ -6,11 +6,17 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
-    container: {
-      marginTop: '60px',
+    layout: {
+      display: 'flex',
+      height: '100vh',
       '& .MuiContainer-maxWidthLg': {
         maxWidth: 1380,
       },
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      // justifyContent: 'center',
     },
   })
 })
