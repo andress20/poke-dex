@@ -1,14 +1,11 @@
 import { AppBar, Avatar, Box, IconButton, MenuItem, Toolbar, Tooltip, Typography, Container } from '@mui/material'
 import { Fragment, useContext, useState } from 'react'
-// import MenuIcon from '@mui/icons-material/Menu'
 import Link from 'next/link'
 import UserContext from '@context'
-// import style from './header.module.css'
-import useStyle from './styles'
+import styles from './header.module.css'
 
 const Header = () => {
   const currentUser = useContext(UserContext)
-  const classes = useStyle()
 
   const menuItems = ['login', 'dashboard', 'allPokemonsPagination', 'allPokemonsScroll', 'allPokemonsByType', 'about']
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -33,10 +30,10 @@ const Header = () => {
   return (
     <Fragment>
       <AppBar>
-        <Toolbar className={classes.toolBar} variant="dense">
-          <Box className={classes.menuItems}>{menuItems.map(item => renderItemMenu(item))}</Box>
+        <Toolbar className={styles.toolBar} variant="dense">
+          <Box className={styles.menuItems}>{menuItems.map(item => renderItemMenu(item))}</Box>
 
-          <Tooltip className={classes.toolTip} title="Account settings">
+          <Tooltip title="Account settings">
             <IconButton
               onClick={handleClick}
               size="small"

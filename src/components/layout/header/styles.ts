@@ -13,9 +13,6 @@ const useStyles = makeStyles((theme: Theme) => {
         position: 'fixed',
         right: '200px',
       },
-      // '& .MuiBox': {
-      //   display: 'flex',
-      // },
     },
     menuItems: {
       display: 'flex',

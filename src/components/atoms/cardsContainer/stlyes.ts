@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     cardsContainer: {
       display: 'flex',
-      maxWidth: '70%',
+      maxWidth: '100%',
       flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'center',
