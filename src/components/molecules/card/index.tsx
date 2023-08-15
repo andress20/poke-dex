@@ -5,7 +5,7 @@ import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { componentProps } from './types'
 import UserContext from '@context'
 import Cookies from 'js-cookie'
-import { useContext, Fragment } from 'react'
+import { useContext, Fragment, useEffect } from 'react'
 import { useToast } from '@hooks'
 import Toast from '@atoms/toast'
 import { userActionTypes } from '@src/context/types'
@@ -15,20 +15,22 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   const user = useContext(UserContext)
   const { message, severity, openToast, handleOpenToast, handleCloseToast } = useToast()
 
+  useEffect(() => {
+    Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(user), { expires: 1 })
+  }, [user])
+
   function handlerClick() {
     if (!user.name) {
       handleOpenToast('You must be logged in', 'warning')
     } else {
       if (user.likes.includes(title)) {
-        user.userDispatch({ type: userActionTypes.substractLikes, payload: title })
+        user.userDispatch({ type: userActionTypes.substractLikes, payload: { pokemonSingleName: title } })
         return
       } else {
-        user.userDispatch({ type: userActionTypes.addLikes, payload: title })
-        Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(user), { expires: 1 })
+        user.userDispatch({ type: userActionTypes.addLikes, payload: { pokemonArrayNames: [title] } })
       }
     }
   }
-  console.log('cookie updated', Cookies.get(`pokemonUser_${user.name}`))
 
   return (
     <Fragment>

@@ -7,7 +7,13 @@ export enum userActionTypes {
 }
 export type UserActionsTypes = 'name' | 'likes'
 
+export interface UserPayload {
+  userName?: string
+  pokemonSingleName?: string
+  pokemonArrayNames?: string[]
+}
+
 export interface UserActions {
   type: userActionTypes
-  payload: string
+  payload: UserPayload
 }

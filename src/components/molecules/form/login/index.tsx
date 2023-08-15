@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useState } from 'react'
 import InputTextField from '@atoms/input'
-import { Box, FormControl, FormGroup, Button, InputAdornment, IconButton } from '@mui/material'
+import { Box, FormControl, FormGroup, Button, InputAdornment, IconButton, Typography } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import styles from './form.module.css'
 import { createUser } from '@services/services'
@@ -51,7 +51,7 @@ const LoginUserForm: React.FC = (): JSX.Element => {
     const createdUser = await createUser(user)
     if (createdUser) {
       Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
-      currentUser.userDispatch({ type: userActionTypes.updateName, payload: user.name })
+      currentUser.userDispatch({ type: userActionTypes.updateName, payload: { userName: user.name } })
       router.push('/dashboard')
     }
   }
@@ -59,13 +59,12 @@ const LoginUserForm: React.FC = (): JSX.Element => {
   function handleLogin() {
     const loggedUserCookie = Cookies.get(`pokemonUser_${user.name}`)
     const loggedUser = loggedUserCookie ? JSON.parse(loggedUserCookie) : undefined
-    console.log('loggedUser:', loggedUser)
     if (!loggedUser) {
       enqueueSnackbar('no user found', { variant: 'info' })
       return
     }
-    currentUser.userDispatch({ type: userActionTypes.updateName, payload: loggedUser.name })
-    currentUser.userDispatch({ type: userActionTypes.login, payload: loggedUser.likes })
+    currentUser.userDispatch({ type: userActionTypes.updateName, payload: { userName: loggedUser.name } })
+    currentUser.userDispatch({ type: userActionTypes.login, payload: { pokemonArrayNames: loggedUser.likes } })
     router.push('/dashboard')
   }
 
@@ -125,6 +124,10 @@ const LoginUserForm: React.FC = (): JSX.Element => {
           </FormGroup>
         </FormControl>
       </form>
+
+      <Typography sx={{ marginTop: 10, fontWeight: 100 }}>
+        * Users with no activity for 3 days, will be removed{' '}
+      </Typography>
       <Toast message={message} open={openToast} close={handleCloseToast} severity={severity} />
     </Box>
   )
