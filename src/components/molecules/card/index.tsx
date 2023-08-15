@@ -4,6 +4,7 @@ import { Card, CardActions, CardContent, Button, Typography } from '@mui/materia
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { componentProps } from './types'
 import UserContext from '@context'
+import Cookies from 'js-cookie'
 import { useContext, Fragment } from 'react'
 import { useToast } from '@hooks'
 import Toast from '@atoms/toast'
@@ -23,9 +24,11 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
         return
       } else {
         user.userDispatch({ type: userActionTypes.addLikes, payload: title })
+        Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(user), { expires: 1 })
       }
     }
   }
+  console.log('cookie updated', Cookies.get(`pokemonUser_${user.name}`))
 
   return (
     <Fragment>

@@ -11,9 +11,9 @@ import { userActionTypes } from '@src/context/types'
 import Toast from '@atoms/toast'
 import { useToast } from '@hooks'
 import { enqueueSnackbar } from 'notistack'
-import { UserLogin } from '@def/IUser'
+import { UserLogin, User } from '@def/IUser'
 
-const LoginForm: React.FC = (): JSX.Element => {
+const LoginUserForm: React.FC = (): JSX.Element => {
   const [user, setUser] = useState<UserLogin>({ name: '', password: '', likes: [''] })
   const [showPassword, setShowPassword] = useState(false)
 
@@ -54,6 +54,19 @@ const LoginForm: React.FC = (): JSX.Element => {
       currentUser.userDispatch({ type: userActionTypes.updateName, payload: user.name })
       router.push('/dashboard')
     }
+  }
+
+  function handleLogin() {
+    const loggedUserCookie = Cookies.get(`pokemonUser_${user.name}`)
+    const loggedUser = loggedUserCookie ? JSON.parse(loggedUserCookie) : undefined
+    console.log('loggedUser:', loggedUser)
+    if (!loggedUser) {
+      enqueueSnackbar('no user found', { variant: 'info' })
+      return
+    }
+    currentUser.userDispatch({ type: userActionTypes.updateName, payload: loggedUser.name })
+    currentUser.userDispatch({ type: userActionTypes.login, payload: loggedUser.likes })
+    router.push('/dashboard')
   }
 
   const IconPassword = () => (
@@ -105,7 +118,7 @@ const LoginForm: React.FC = (): JSX.Element => {
               <Button variant="text" type="submit" sx={{ width: 'max-content', margin: 'auto' }}>
                 Create
               </Button>
-              <Button variant="text" type="button" sx={{ width: 'max-content', margin: 'auto' }}>
+              <Button variant="text" type="button" onClick={handleLogin} sx={{ width: 'max-content', margin: 'auto' }}>
                 Login
               </Button>
             </Box>
@@ -116,4 +129,4 @@ const LoginForm: React.FC = (): JSX.Element => {
     </Box>
   )
 }
-export default LoginForm
+export default LoginUserForm

@@ -1,9 +1,15 @@
 import { createContext, useReducer } from 'react'
 import { User } from '@def/IUser'
 import { UserActions, userActionTypes } from './types'
+import { Page } from '../stories/Page'
 
 interface ComponentProps {
   children: React.ReactNode
+}
+
+const initialState = {
+  name: '',
+  likes: [],
 }
 
 // Initial state of the context
@@ -25,14 +31,19 @@ CurrentUserContext.displayName = 'My user context' // "Myusercontext.Provider" n
 export const UserContext: React.FC<ComponentProps> = ({ children }): JSX.Element => {
   const reducer = (state: User, action: UserActions): User => {
     switch (action.type) {
+      case userActionTypes.login:
+        return { ...state, likes: [action?.payload] }
+        break
       case userActionTypes.updateName:
-        return { ...state, name: action.payload }
+        return { ...state, name: action?.payload }
         break
       case userActionTypes.addLikes:
         return { ...state, likes: [...state.likes, action.payload] }
         break
       case userActionTypes.substractLikes:
         return { ...state, likes: [...state.likes.filter(pokemon => pokemon !== action.payload)] }
+      case userActionTypes.logout:
+        return { ...initialState }
       default:
         return state
         break
