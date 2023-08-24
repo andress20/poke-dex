@@ -73,7 +73,9 @@ export const getPokemonsByType = async (data: GeneralResult | undefined, listTyp
     try {
       const response = await fetch(`${config.siteUrl}/api/AllPokemonsByType`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ pokemons: listTypesChecked }),
       })
       const pokemonTypes = await response.json()
