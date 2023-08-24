@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => {
     cardImage: {
       backgroundPosition: '55%',
       backgroundSize: '200%',
-      backgroundImage: `url('${config.siteUrl}/pokemon-wallpaper.jpg')`,
+      backgroundImage: `url('/pokemon-wallpaper.jpg')`,
       /* TODO - remove important */
       padding: '10px !important',
       borderTopLeftRadius: '1rem',

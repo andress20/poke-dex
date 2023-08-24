@@ -6,6 +6,7 @@
     "dev": "npm run open-browser && next dev",
     "open-browser": "start http://localhost:3000",
     "devLinux": "npm run open-browserLinux && next dev",
+    "startLinux": "next start",
     "open-browserLinux": "xdg-open http://localhost:3000",
     "build": "next build",
     "start": "npm run open-browser && next start",
