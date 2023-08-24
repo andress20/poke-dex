@@ -45,7 +45,7 @@ const Header = () => {
         </Box>
       ),
       action: () => {
-        currentUser.userDispatch({ type: userActionTypes.logout, payload: '' }), handleClose(), router.push('/login')
+        currentUser.userDispatch({ type: userActionTypes.logout, payload: {} }), handleClose(), router.push('/login')
       },
     },
   ]
