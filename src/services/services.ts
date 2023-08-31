@@ -1,6 +1,6 @@
 import { GeneralResult } from '@def/IGeneralResult'
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
-import { config } from '@util/config'
+import { config } from '@utils/config'
 import { UserLogin } from '@def/IUser'
 import bcrypt from 'bcryptjs'
 import Cookies from 'js-cookie'

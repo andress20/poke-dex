@@ -1,0 +1,41 @@
+module.exports = {
+  roots: ['<rootDir>'],
+  testEnvironment: 'jest-environment-jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
+  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  transform: {
+    '^.+\\.(ts|tsx)$': 'babel-jest',
+  },
+  //   setupFiles: ['<rootDir>/src/tests/jest.setup.js'],
+  //   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '^@comp/(.*)$': '<rootDir>/src/components/$1',
+    '^@atoms/(.*)$': '<rootDir>/src/components/atoms/$1',
+    '^@molecules$': '<rootDir>/src/molecules',
+    '^@organisms$': '<rootDir>/src/organisms',
+    '^@services$': '<rootDir>/src/services',
+    // if there is no sub-folders we must remove /(.*) from the regex if not get an error
+    '^@context$': '<rootDir>/src/context/',
+    '^@customTypes$': '<rootDir>/src/types',
+    '^@utils/(.*)$': '<rootDir>/src/utilities/$1',
+    '^@def$': '<rootDir>/src/types',
+    '^@hooks$': '<rootDir>/src/hooks',
+    '^@themes$': '<rootDir>/src/themes',
+    '^@tests$': '<rootDir>/src/test-utils',
+    '^@src$': '<rootDir>/src',
+    '^@src/context/types$': '<rootDir>/src/context/types',
+    '^@mocks$': '<rootDir>/src/mocks',
+  },
+  //   collectCoverageFrom: ['**/*.{ts,tsx}', '!**/node_modules/**', '!**/vendor/**', '!**/public/**'],
+  //   coverageThreshold: {
+  //     global: {
+  //       statements: 3.98,
+  //       branches: 0.59,
+  //       lines: 4.11,
+  //       functions: 1.35,
+  //     },
+  //   },
+}

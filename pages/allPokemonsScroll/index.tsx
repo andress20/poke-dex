@@ -4,7 +4,7 @@ import { getAllPokemons } from '../../src/services/services'
 import { GeneralResult } from '@def/IGeneralResult'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PokemonCard from '@comp/molecules/card'
-import { queryKeys } from '@util/tanstackQuery/queryKeys'
+import { queryKeys } from '@utils/tanstackQuery/queryKeys'
 import CardsContainer from '@comp/atoms/cardsContainer'
 
 function AllPokemonsScroll() {

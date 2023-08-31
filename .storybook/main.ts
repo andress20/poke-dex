@@ -22,11 +22,10 @@ module.exports = {
       '@atoms': path.resolve(__dirname, '../src/components/atoms'),
       '@molecules': path.resolve(__dirname, '../src/components/molecules'),
       '@organisms': path.resolve(__dirname, '../src/components/organisms'),
-      '@util': path.resolve(__dirname, '../src/utilities'),
+      '@utils': path.resolve(__dirname, '../src/utilities'),
       '@hooks': path.resolve(__dirname, '../src/hooks'),
-      '@def': path.resolve(__dirname, '../src/definitions'),
       '@services': path.resolve(__dirname, '../src/services'),
-      '@theme': ['src/themes'],
+      '@themes': ['src/themes'],
     }
 
     return config

@@ -1,6 +1,6 @@
 import { IPokemon, PokemonUrl } from '@def/IPokemon'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { config } from '@util/config'
+import { config } from '@utils/config'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { pokemonsList } = req.body

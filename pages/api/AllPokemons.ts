@@ -1,5 +1,5 @@
 import { IPokemon, PokemonUrl } from '@def/IPokemon'
-import { config } from '@util/config'
+import { config } from '@utils/config'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { GeneralResult } from '@def/IGeneralResult'
 

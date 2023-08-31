@@ -1,9 +1,8 @@
-import { Fragment } from 'react'
 import { PokemonsImages, PokemonUrl } from '@src/types/IPokemon'
 // TODO - el storybook no esta tomando los @def ts.config!!
 import PokemonCard from '../../molecules/card'
 import styles from './dashboard.module.css'
-import { Box, Container } from '@mui/material'
+import { Container } from '@mui/material'
 
 const Dashboard: React.FC<PokemonsImages> = ({ images }) => {
   return (

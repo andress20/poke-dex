@@ -4,7 +4,7 @@ import { Theme } from '@mui/material'
 // import { createStyles, makeStyles, useTheme } from '@mui/material/styles'
 import { createStyles, makeStyles } from '@mui/styles'
 
-import { config } from '@util/config'
+import { config } from '@utils/config'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
