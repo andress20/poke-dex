@@ -58,8 +58,8 @@ const LoginUserForm: React.FC = (): JSX.Element => {
 
   function handleLogin() {
     const loggedUserCookie = Cookies.get(`pokemonUser_${user.name}`)
-    const loggedUser = loggedUserCookie ? JSON.parse(loggedUserCookie) : undefined
-    if (!loggedUser) {
+    const loggedUser: User = loggedUserCookie ? JSON.parse(loggedUserCookie) : undefined
+    if (!loggedUser.name) {
       enqueueSnackbar('no user found', { variant: 'info' })
       return
     }
