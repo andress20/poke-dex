@@ -6,10 +6,10 @@ import { Container } from '@mui/material'
 
 const Dashboard: React.FC<PokemonsImages> = ({ images }) => {
   return (
-    <Container className={styles.dashboard}>
+    <Box className={styles.dashboard}>
       {images &&
         images.map((image: PokemonUrl) => <PokemonCard key={image.name} title={image.name} image={image.url} />)}
-    </Container>
+    </Box>
   )
 }
 export default Dashboard
