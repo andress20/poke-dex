@@ -1,14 +1,14 @@
 export enum userActionTypes {
-  updateName = 'UPDATE_NAME',
-  addLikes = 'ADD_LIKES',
-  substractLikes = 'SUBSTRACT_LIKES',
   login = 'LOGIN',
   logout = 'LOGOUT',
+  addLikes = 'ADD_LIKES',
+  substractLikes = 'SUBSTRACT_LIKES',
 }
 export type UserActionsTypes = 'name' | 'likes'
 
 export interface UserPayload {
   userName?: string
+  password?: string
   pokemonSingleName?: string
   pokemonArrayNames?: string[]
 }

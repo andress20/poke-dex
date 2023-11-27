@@ -1,12 +1,12 @@
 import { GeneralResult } from '@def/IGeneralResult'
 import { IPokemon, PokemonUrl } from '@src/types/IPokemon'
 import { config } from '@utils/config'
-import { UserLogin } from '@def/IUser'
+import { User } from '@def/IUser'
 import bcrypt from 'bcryptjs'
 import Cookies from 'js-cookie'
 import { enqueueSnackbar } from 'notistack'
 
-export const createUser = async (user: UserLogin) => {
+export const createUser = async (user: User) => {
   const userExist = Cookies.get(`pokemonUser_${user.name}`)
   if (userExist) {
     enqueueSnackbar('usuario ya existe', { variant: 'warning' })
@@ -21,6 +21,18 @@ export const createUser = async (user: UserLogin) => {
     body: JSON.stringify(user),
   })
   if (response.ok) return user
+}
+
+export const loginUser = async (user: User) => {
+  const loggedUserCookie = Cookies.get(`pokemonUser_${user.name}`)
+  const savedUser: User = loggedUserCookie ? JSON.parse(loggedUserCookie) : undefined
+  if (!savedUser) return false
+  const response = await fetch(`${config.siteUrl}/api/user/loginUser`, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ userPass: user.password, savedUserPass: savedUser.password }),
+  })
+  if (response.ok) return savedUser
 }
 
 export const getAllPokemons = async (page: number) => {

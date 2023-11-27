@@ -4,9 +4,8 @@ import { Card, CardActions, CardContent, Button, Typography } from '@mui/materia
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { componentProps } from './types'
 import UserContext from '@context'
-// import UserContext from '../../../context/index'
 import Cookies from 'js-cookie'
-import { useContext, Fragment, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useToast } from '@hooks'
 import Toast from '@atoms/toast'
 import { userActionTypes } from '@src/context/types'
@@ -22,11 +21,10 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
 
   function handlerClick() {
     if (!user.name) {
-      handleOpenToast('You must be logged in', 'warning')
+      return handleOpenToast('You must be logged in', 'warning')
     } else {
       if (user.likes.includes(title)) {
         user.userDispatch({ type: userActionTypes.substractLikes, payload: { pokemonSingleName: title } })
-        return
       } else {
         user.userDispatch({ type: userActionTypes.addLikes, payload: { pokemonArrayNames: [title] } })
       }
