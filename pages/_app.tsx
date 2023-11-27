@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={themes[Themes.lightTheme]}>
           <Hydrate state={pageProps.dehydratedState}>
-            <SnackbarProvider>
+            <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
               <Fetching />
               <CssBaseline />
               <UserContext>

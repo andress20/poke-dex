@@ -1,14 +1,16 @@
 services:
-  pokeFront:
+  pokeapp:
     image: pokeapp
-    container_name: pokemonApp
+    container_name: pokeapp-container
+    env_file:
+      - .env
     ports:
       - 3000:3000
-  ngrok:
-    image: ngrok/ngrok
-    command: ['http', '3000']
-    environment:
-      - NGROK_AUTHTOKEN=2UOYXfexYXPLXI1iHey9maL0Abv_br9JstMvYN5V1ViBAFNT
-    container_name: ngrok
-    ports:
-      - 4040:4040
+  #ngrok:
+  #image: ngrok/ngrok
+  #command: ['http', '3000']
+  #environment:
+  #- NGROK_AUTHTOKEN=2UOYXfexYXPLXI1iHey9maL0Abv_br9JstMvYN5V1ViBAFNT
+  #container_name: ngrok
+  #ports:
+  #- 4040:4040

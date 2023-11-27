@@ -20,7 +20,7 @@ const Toast: React.FC<IToastProps> = ({ message, open, close, severity }) => {
     <div>
       <Snackbar
         open={open}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         autoHideDuration={5_000}
         onClose={close}
         // message={message} // Alert tag overrides this prop
