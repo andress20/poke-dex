@@ -1,12 +1,31 @@
 import { createTheme } from '@mui/material'
-import { red, yellow } from '@mui/material/colors'
+import { red, grey } from '@mui/material/colors'
+
+// Expand theme variables
+declare module '@mui/material/styles' {
+  interface Theme {
+    font: {
+      primary: string
+    }
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    font?: {
+      primary?: string
+    }
+  }
+}
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: { main: red[900] },
-    secondary: { main: yellow[500] },
+    secondary: { main: grey[500], light: grey[200], dark: grey[800] },
   },
+  font: {
+    primary: grey[400],
+  },
+
   components: {
     // Name of the component
     MuiButton: {

@@ -6,11 +6,19 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
-    layout: {
-      '& .MuiContainer-maxWidthLg': {
-        maxWidth: '100vw',
+    footer: {
+      backgroundColor: theme.palette.secondary.dark,
+      textAlign: 'center',
+      color: theme.palette.secondary.light,
+      '& > a': {
+        color: theme.palette.secondary.main,
+        textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
       },
     },
   })
 })
+
 export default useStyles

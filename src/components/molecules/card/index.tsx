@@ -16,7 +16,7 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   const { message, severity, openToast, handleOpenToast, handleCloseToast } = useToast()
 
   useEffect(() => {
-    Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(user), { expires: 1 })
+    Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(user), { expires: 3 })
   }, [user])
 
   function handlerClick() {

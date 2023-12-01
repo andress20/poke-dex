@@ -1,8 +1,8 @@
 import { FormEvent, useContext, useState } from 'react'
 import InputTextField from '@atoms/input'
-import { Box, FormGroup, Button, InputAdornment, IconButton, Typography } from '@mui/material'
+import { Box, FormGroup, Button, InputAdornment, IconButton } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import styles from './form.module.css'
+import useStyles from './styles'
 import { createUser, loginUser } from '@services/services'
 import { useRouter } from 'next/router'
 import UserContext from '@context'
@@ -12,10 +12,12 @@ import Toast from '@atoms/toast'
 import { useToast } from '@hooks'
 import { enqueueSnackbar } from 'notistack'
 import { User } from '@def/IUser'
+import IPlainObject from '@def/IPlainObject'
 
-const LoginUserForm: React.FC = (): JSX.Element => {
+const LoginForm: React.FC<IPlainObject> = ({ bottomMessage }): JSX.Element => {
   const [user, setUser] = useState<User>({ name: '', password: '', likes: [''] })
   const [showPassword, setShowPassword] = useState(false)
+  const styles = useStyles()
 
   const router = useRouter()
   const currentUser = useContext(UserContext)
@@ -49,7 +51,7 @@ const LoginUserForm: React.FC = (): JSX.Element => {
     }
     const createdUser = await createUser(user)
     if (createdUser) {
-      Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 1 })
+      Cookies.set(`pokemonUser_${user.name}`, JSON.stringify(createdUser), { expires: 3 })
       currentUser.userDispatch({
         type: userActionTypes.login,
         payload: { userName: user.name, password: user.password },
@@ -95,7 +97,7 @@ const LoginUserForm: React.FC = (): JSX.Element => {
   }
 
   return (
-    <Box className={styles.loginForm}>
+    <main className={styles.loginForm}>
       <form onSubmit={e => submitUser(e)}>
         <FormGroup>
           <InputTextField
@@ -129,11 +131,9 @@ const LoginUserForm: React.FC = (): JSX.Element => {
         </FormGroup>
       </form>
 
-      <Typography sx={{ marginTop: 10, fontWeight: 100 }}>
-        * Users with no activity for 3 days, will be removed{' '}
-      </Typography>
+      {bottomMessage}
       <Toast message={message} open={openToast} close={handleCloseToast} severity={severity} />
-    </Box>
+    </main>
   )
 }
-export default LoginUserForm
+export default LoginForm

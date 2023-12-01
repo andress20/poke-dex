@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Layout from '@comp/layout/content'
+import Layout from '@comp/layout'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '@themes/index'
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query'
@@ -33,12 +33,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
               <Fetching />
               <CssBaseline />
-              <UserContext>
-                <Layout>
-                  <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+              <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+              <Layout>
+                <UserContext>
                   <Component {...pageProps} />
-                </Layout>
-              </UserContext>
+                </UserContext>
+              </Layout>
             </SnackbarProvider>
           </Hydrate>
         </ThemeProvider>

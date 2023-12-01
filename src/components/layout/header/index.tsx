@@ -1,26 +1,16 @@
-import {
-  AppBar,
-  Avatar,
-  Box,
-  IconButton,
-  MenuItem,
-  Toolbar,
-  Tooltip,
-  Typography,
-  Menu,
-  ListItemIcon,
-} from '@mui/material'
-import { Fragment, useContext, useState } from 'react'
+import { Avatar, Box, IconButton, MenuItem, Tooltip, Typography, Menu, ListItemIcon } from '@mui/material'
+import { useContext, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import UserContext from '@context'
-import styles from './header.module.css'
 import { userActionTypes } from '@src/context/types'
 import { Logout } from '@mui/icons-material'
+import useStyles from './styles'
 
 const Header = () => {
   const currentUser = useContext(UserContext)
   const router = useRouter()
+  const styles = useStyles()
 
   const menuItems = ['login', 'dashboard', 'allPokemonsPagination', 'allPokemonsScroll', 'allPokemonsByType', 'about']
   const settings = [
@@ -70,50 +60,50 @@ const Header = () => {
   }
 
   return (
-    <Fragment>
-      <AppBar>
-        <Toolbar className={styles.toolBar} variant="dense">
-          <Box className={styles.menuItems}>{menuItems.map(item => renderItemMenu(item))}</Box>
-          {currentUser.name && (
-            <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 4 }}
-                aria-controls={open ? 'account-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-              >
-                <Avatar sx={{ width: 32, height: 32 }}>{currentUser.name.charAt(0).toUpperCase()}</Avatar>
-              </IconButton>
-            </Tooltip>
-          )}
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
+    <nav className={styles.navBar}>
+      <menu className={styles.menuBar}>
+        <li>first</li>
+        <li>two</li>
+      </menu>
+      {/* <menu className={styles.menuBar}>{menuItems.map(item => renderItemMenu(item))}</menu> */}
+      {/* {currentUser.name && (
+        <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            sx={{ ml: 4 }}
+            aria-controls={open ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
           >
-            {settings.map(setting => (
-              <MenuItem key={setting.name} onClick={setting.action}>
-                {setting.icon}
-                <Typography textAlign="center">{setting.name}</Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Toolbar>
-      </AppBar>
-    </Fragment>
+            <Avatar sx={{ width: 32, height: 32 }}>{currentUser.name.charAt(0).toUpperCase()}</Avatar>
+          </IconButton>
+        </Tooltip>
+      )}
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        {settings.map(setting => (
+          <MenuItem key={setting.name} onClick={setting.action}>
+            {setting.icon}
+            <Typography textAlign="center">{setting.name}</Typography>
+          </MenuItem>
+        ))}
+      </Menu> */}
+    </nav>
   )
 }
 

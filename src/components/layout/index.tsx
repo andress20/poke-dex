@@ -1,16 +1,17 @@
 import React from 'react'
-import Header from '@comp/layout/header'
-import Footer from '@comp/molecules/footer'
-import { Box } from '@mui/material'
+import Header from './header'
+import Footer from './footer'
 import IPlainObject from '@src/types/IPlainObject'
+import useStyles from './styles'
 
 const Layout: React.FC<IPlainObject> = ({ children }) => {
+  const styles = useStyles()
   return (
-    <Box>
+    <div className={styles.layout}>
       <Header />
       {children}
       <Footer />
-    </Box>
+    </div>
   )
 }
 
