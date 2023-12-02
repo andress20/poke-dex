@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Layout from '@comp/layout'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '@themes/index'
-import { QueryClientProvider } from '@tanstack/react-query'
+import { Hydrate, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Fetching } from '@comp/atoms/spinners'
 import Toast from '@atoms/toast'
@@ -28,18 +28,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={themes[Themes.lightTheme]}>
-          {/* <Hydrate state={pageProps.dehydratedState}> */}
-          <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-            {/* <Fetching /> */}
-            <CssBaseline />
-            <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-            <Layout>
-              <UserContext>
-                <Component {...pageProps} />
-              </UserContext>
-            </Layout>
-          </SnackbarProvider>
-          {/* </Hydrate> */}
+          <Hydrate state={pageProps.dehydratedState}>
+            <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+              <Fetching />
+              <CssBaseline />
+              <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+              <Layout>
+                <UserContext>
+                  <Component {...pageProps} />
+                </UserContext>
+              </Layout>
+            </SnackbarProvider>
+          </Hydrate>
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
