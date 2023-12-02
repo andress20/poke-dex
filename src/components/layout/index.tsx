@@ -9,7 +9,7 @@ const Layout: React.FC<IPlainObject> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header />
-      {children}
+      <>{children}</>
       <Footer />
     </div>
   )

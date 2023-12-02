@@ -3,13 +3,12 @@ import Head from 'next/head'
 import Layout from '@comp/layout'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import themes, { Themes } from '@themes/index'
-import { Hydrate, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Fetching } from '@comp/atoms/spinners'
 import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
 import { UserContext } from '@context'
-import { Fragment } from 'react'
 import { SnackbarProvider } from 'notistack'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,29 +21,29 @@ function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = useInitialQueryClient(setOpenToast)
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>Poke-dexApp</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={themes[Themes.lightTheme]}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-              <Fetching />
-              <CssBaseline />
-              <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-              <Layout>
-                <UserContext>
-                  <Component {...pageProps} />
-                </UserContext>
-              </Layout>
-            </SnackbarProvider>
-          </Hydrate>
+          {/* <Hydrate state={pageProps.dehydratedState}> */}
+          <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+            {/* <Fetching /> */}
+            <CssBaseline />
+            <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
+            <Layout>
+              <UserContext>
+                <Component {...pageProps} />
+              </UserContext>
+            </Layout>
+          </SnackbarProvider>
+          {/* </Hydrate> */}
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </Fragment>
+    </>
   )
 }
 

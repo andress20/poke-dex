@@ -97,43 +97,41 @@ const LoginForm: React.FC<IPlainObject> = ({ bottomMessage }): JSX.Element => {
   }
 
   return (
-    <main className={styles.loginForm}>
+    <div className={styles.loginForm}>
       <form onSubmit={e => submitUser(e)}>
-        <FormGroup>
-          <InputTextField
-            id="name"
-            name="name"
-            label="User"
-            autoComplete="username"
-            value={user.name}
-            onChange={hadleChange}
-          />
-          <InputTextField
-            id="password"
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            label="Password"
-            value={user.password}
-            onChange={hadleChange}
-            autoComplete="current-password"
-            // TODO: Keep on eye in this InputProps, probably is causing problems in the first rendeding.
-            InputProps={InputProps}
-          />
+        <InputTextField
+          id="name"
+          name="name"
+          label="User"
+          autoComplete="username"
+          value={user.name}
+          onChange={hadleChange}
+        />
+        <InputTextField
+          id="password"
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          label="Password"
+          value={user.password}
+          onChange={hadleChange}
+          autoComplete="current-password"
+          // TODO: Keep on eye in this InputProps, probably is causing problems in the first rendeding.
+          InputProps={InputProps}
+        />
 
-          <Box sx={{ width: 'max-content', margin: 'auto' }}>
-            <Button variant="text" type="submit" sx={{ width: 'max-content', margin: 'auto' }}>
-              Create
-            </Button>
-            <Button variant="text" type="button" onClick={handleLogin} sx={{ width: 'max-content', margin: 'auto' }}>
-              Login
-            </Button>
-          </Box>
-        </FormGroup>
+        <Box sx={{ width: 'max-content', margin: 'auto' }}>
+          <Button variant="text" type="submit" sx={{ width: 'max-content', margin: 'auto' }}>
+            Create
+          </Button>
+          <Button variant="text" type="button" onClick={handleLogin} sx={{ width: 'max-content', margin: 'auto' }}>
+            Login
+          </Button>
+        </Box>
       </form>
 
       {bottomMessage}
       <Toast message={message} open={openToast} close={handleCloseToast} severity={severity} />
-    </main>
+    </div>
   )
 }
 export default LoginForm

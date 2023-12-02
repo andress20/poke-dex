@@ -61,12 +61,8 @@ const Header = () => {
 
   return (
     <nav className={styles.navBar}>
-      <menu className={styles.menuBar}>
-        <li>first</li>
-        <li>two</li>
-      </menu>
-      {/* <menu className={styles.menuBar}>{menuItems.map(item => renderItemMenu(item))}</menu> */}
-      {/* {currentUser.name && (
+      <menu className={styles.menuBar}>{menuItems.map(item => renderItemMenu(item))}</menu>
+      {currentUser.name && (
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -102,7 +98,7 @@ const Header = () => {
             <Typography textAlign="center">{setting.name}</Typography>
           </MenuItem>
         ))}
-      </Menu> */}
+      </Menu>
     </nav>
   )
 }

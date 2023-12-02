@@ -10,11 +10,11 @@ export function Fetching(): JSX.Element {
   const isfetching = useIsFetching()
   const [path, setPath] = useState('')
 
-  useEffect(() => {
-    if (window !== undefined) {
-      setPath(window?.location.href.split('/').pop() || '')
-    }
-  }, [isfetching])
+  // useEffect(() => {
+  //   if (window !== undefined) {
+  //     setPath(window?.location.href.split('/').pop() || '')
+  //   }
+  // }, [isfetching])
 
   const display = isfetching ? 'inherit' : 'none'
 
