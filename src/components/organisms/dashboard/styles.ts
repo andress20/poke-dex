@@ -6,20 +6,11 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
-    navBar: {
-      backgroundColor: theme.palette.primary.main,
-      height: 'inherit',
-    },
-    menuBar: {
+    dashboard: {
       display: 'flex',
-      flexWrap: 'wrap',
-      height: '-webkit-fill-available',
+      height: '100vh',
       justifyContent: 'center',
-      margin: '0',
-      '& .MuiMenuItem-gutters': {
-        padding: '0px 16px',
-        color: theme.font.primary,
-      },
+      alignItems: 'center',
     },
   })
 })

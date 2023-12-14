@@ -97,8 +97,8 @@ const LoginForm: React.FC<IPlainObject> = ({ bottomMessage }): JSX.Element => {
   }
 
   return (
-    <div className={styles.loginForm}>
-      <form onSubmit={e => submitUser(e)}>
+    <div className={styles.containerForm}>
+      <form onSubmit={e => submitUser(e)} className={styles.form}>
         <InputTextField
           id="name"
           name="name"

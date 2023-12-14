@@ -10,6 +10,13 @@ import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
 import { UserContext } from '@context'
 import { SnackbarProvider } from 'notistack'
+/**
+ * ClientOnly was necessary to solve MUI and NextJS issues with styles because SSR has conflicts
+ * when server render some styles adds specific className and then clientSide renders the same
+ * style but with different className and that generates inconsistencies
+ * https://github.com/mui/material-ui/issues/15073
+ */
+import ClientOnly from './ClientOnly'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { openToast, setOpenToast, handleCloseToast } = useToast()
@@ -33,11 +40,13 @@ function MyApp({ Component, pageProps }: AppProps) {
               <Fetching />
               <CssBaseline />
               <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
-              <Layout>
-                <UserContext>
-                  <Component {...pageProps} />
-                </UserContext>
-              </Layout>
+              <ClientOnly>
+                <Layout>
+                  <UserContext>
+                    <Component {...pageProps} />
+                  </UserContext>
+                </Layout>
+              </ClientOnly>
             </SnackbarProvider>
           </Hydrate>
         </ThemeProvider>

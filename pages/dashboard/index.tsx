@@ -17,17 +17,17 @@ const DashboardHome: NextPage = () => {
   return <Fragment>{pokemonsImages && <Dashboard images={pokemonsImages} />}</Fragment>
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const pokemonsList = ['charmander', 'squirtle', 'bulbasaur', 'pikachu']
+export const getStaticProps: GetStaticProps = async () => {
+  const pokemonsList = ['charmander', 'squirtle', 'bulbasaur']
 
-//   const queryClient = new QueryClient()
+  const queryClient = new QueryClient()
 
-//   await queryClient.prefetchQuery({
-//     queryKey: [queryKeys.dashboardPokemons, ...pokemonsList],
-//     queryFn: () => getPokemonsImages(pokemonsList),
-//   })
+  await queryClient.prefetchQuery({
+    queryKey: [queryKeys.dashboardPokemons, ...pokemonsList],
+    queryFn: () => getPokemonsImages(pokemonsList),
+  })
 
-//   return { props: { dehydratedState: dehydrate(queryClient) } }
-// }
+  return { props: { dehydratedState: dehydrate(queryClient) } }
+}
 
 export default DashboardHome

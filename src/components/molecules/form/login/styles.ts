@@ -7,13 +7,16 @@ import { createStyles, makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
-    loginForm: {
-      //   gridColumnStart: 'span 2',
-      height: 'inherit',
+    containerForm: {
       display: 'flex',
       flexDirection: 'column',
+      height: 'inherit',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
     },
   })
 })
