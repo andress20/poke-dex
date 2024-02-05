@@ -1,11 +1,8 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getAllPokemons } from '../../src/services/services'
-import { PokemonUrl } from '@def/IPokemon'
-import PokemonCard from '@comp/molecules/card'
 import { queryKeys } from '@utils/tanstackQuery/queryKeys'
-import CardsContainer from '@comp/atoms/cardsContainer'
-import { Box } from '@mui/material'
+import PokemonPagination from '@comp/organisms/pokemonPagination'
 
 function AllPokemonsPagination() {
   const [page, setPage] = useState(0)
@@ -28,34 +25,6 @@ function AllPokemonsPagination() {
 
   if (isLoading) return <div>Loading...</div> // with keepPreviousData option set to true, this has no effect
 
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '100vw',
-        minHeight: '100vh',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <CardsContainer>
-        {images.pokemons?.length ? (
-          images.pokemons.map((image: PokemonUrl) => (
-            <PokemonCard key={image.name} title={image.name} image={image.url} />
-          ))
-        ) : (
-          <div>Data not found</div>
-        )}
-      </CardsContainer>
-      <button onClick={() => setPage(prev => prev - 1)} disabled={!images.previous}>
-        previous
-      </button>
-      <button onClick={() => setPage(prev => prev + 1)} disabled={!images.next}>
-        next
-      </button>
-    </Box>
-  )
+  return <PokemonPagination images={images} setPage={setPage} />
 }
-
 export default AllPokemonsPagination

@@ -1,5 +1,5 @@
 import { renderWithThemeProvider } from '@tests'
-import Dashboard from '@comp/organisms/dashboard'
+import Dashboard from '@comp/organisms/pokemonPagination'
 
 test('should render dashboard', () => {
   renderWithThemeProvider(

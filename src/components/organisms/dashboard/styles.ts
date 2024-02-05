@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     dashboard: {
       display: 'flex',
-      height: '100vh',
+      height: 'inherit',
       justifyContent: 'center',
       alignItems: 'center',
     },
