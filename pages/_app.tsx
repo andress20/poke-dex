@@ -10,6 +10,7 @@ import Toast from '@atoms/toast'
 import { useToast, useInitialQueryClient } from '@hooks'
 import { UserContext } from '@context'
 import { SnackbarProvider } from 'notistack'
+import { StyledEngineProvider } from '@mui/material/styles'
 /**
  * ClientOnly was necessary to solve MUI and NextJS issues with styles because SSR has conflicts
  * when server render some styles adds specific className and then clientSide renders the same
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const userMenuRef = useRef<HTMLDivElement>(null)
 
   return (
-    <>
+    <StyledEngineProvider injectFirst>
       <Head>
         <title>Poke-dexApp</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -65,7 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </>
+    </StyledEngineProvider>
   )
 }
 
