@@ -17,6 +17,12 @@ import { SnackbarProvider } from 'notistack'
  * https://github.com/mui/material-ui/issues/15073
  */
 import ClientOnly from './ClientOnly'
+/**
+ * Add UserMenu (circle with the initial letter of the user)
+ * using Portal just for academic purposes
+ */
+import UserMenu from '@comp/layout/userMenu'
+import { useRef } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { openToast, setOpenToast, handleCloseToast } = useToast()
@@ -26,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
    * during the whole life cicle
    */
   const queryClient = useInitialQueryClient(setOpenToast)
+  const userMenuRef = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -41,8 +48,14 @@ function MyApp({ Component, pageProps }: AppProps) {
               <CssBaseline />
               <Toast message="React Query Error" open={openToast} close={handleCloseToast} severity="error" />
               <ClientOnly>
-                <Layout>
+                <Layout userMenuRef={userMenuRef}>
+                  {/* 
+                  Implementation of ref and reactDom.createPortal() (Layout and UserMenu components)
+                  this avoid navBar rendering with Context updates.
+                  could be not necessary but I decided to let it for academic purposes
+                   */}
                   <UserContext>
+                    <UserMenu userMenuRef={userMenuRef} />
                     <Component {...pageProps} />
                   </UserContext>
                 </Layout>

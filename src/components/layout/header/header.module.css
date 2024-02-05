@@ -1,0 +1,17 @@
+.toolBar {
+  display: flex;
+  justify-content: center;
+}
+.toolBar :global .MuiButtonBase-root.MuiIconButton-root {
+  /* position: fixed; */
+  right: 200px;
+}
+.menuItems {
+  display: flex;
+}
+
+.MuiAppBar-colorPrimary,
+.MuiAppBar-positionFixed {
+  background-color: yellow;
+  position: relative;
+}

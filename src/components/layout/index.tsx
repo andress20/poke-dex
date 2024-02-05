@@ -2,13 +2,12 @@ import React from 'react'
 import Header from './header'
 import Footer from './footer'
 import IPlainObject from '@src/types/IPlainObject'
-import useStyles from './styles'
+import styles from './layout.module.css'
 
-const Layout: React.FC<IPlainObject> = ({ children }) => {
-  const styles = useStyles()
+const Layout: React.FC<IPlainObject> = ({ children, userMenuRef }) => {
   return (
     <div className={styles.layout}>
-      <Header />
+      <Header menuUser={<div ref={userMenuRef} />} />
       <>{children}</>
       <Footer />
     </div>
