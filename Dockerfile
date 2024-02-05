@@ -2,7 +2,7 @@ FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN  npm install --production --force
 
 FROM node:18-alpine AS builder
@@ -32,11 +32,8 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT 3000
-ENV NEXT_PUBLIC_SM_URL http://localhost:3000
-ENV DEFAULT_IMAGE https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg
-ENV POKEMON_API_URL https://pokeapi.co/api/v2/pokemon/
-ENV POKEMON_TYPES_API_URL https://pokeapi.co/api/v2/type/
-ENV API_LIMIT_URL_PARAMETER 12
 
-CMD ["yarn", "startLinux"]
+# CMD ["yarn", "startLinux"]
+#with ngrok use start Docker 
+CMD ["yarn", "startDocker"]
 

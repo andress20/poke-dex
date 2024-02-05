@@ -1,0 +1,26 @@
+.card {
+  display: inline-block;
+  border-radius: 20px;
+}
+
+.cardImage {
+  background-position: 55%;
+  background-size: 200%;
+  background-image: url('/pokemon-wallpaper.jpg');
+  padding: 10px;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.cardTitle {
+  text-align: center;
+}
+.cardActions {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 10px;
+  padding: 0;
+}
+.favoriteIcon {
+  /*color: theme.palette.primary.main;*/
+  color: 'blue';
+}

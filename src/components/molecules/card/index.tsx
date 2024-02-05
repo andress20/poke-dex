@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import useStyles from './styles'
+import styles from './card.module.css'
 import { Card, CardActions, CardContent, Button, Typography } from '@mui/material'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { componentProps } from './types'
@@ -11,7 +11,6 @@ import Toast from '@atoms/toast'
 import { userActionTypes } from '@src/context/types'
 
 const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
-  const classes = useStyles()
   const user = useContext(UserContext)
   const { message, severity, openToast, handleOpenToast, handleCloseToast } = useToast()
 
@@ -32,19 +31,19 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   }
 
   return (
-    <Card className={classes.card} sx={{ maxWidth: 300, margin: '10px' }}>
+    <Card className={styles.card} sx={{ maxWidth: 300, margin: '10px' }}>
       {/* <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="250" height="280" /> */}
-      <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
+      <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
       <CardContent sx={{ padding: '0px' }}>
-        <Typography className={classes.cardTitle} variant="h5" component="div">
+        <Typography className={styles.cardTitle} variant="h5" component="div">
           {title}
         </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
+      <CardActions className={styles.cardActions}>
         <Button size="small">More</Button>
         <Button onClick={handlerClick}>
           {user.likes.includes(title) ? (
-            <Favorite className={classes.favoriteIcon} />
+            <Favorite className={styles.favoriteIcon} />
           ) : (
             <FavoriteBorder color="primary" />
           )}

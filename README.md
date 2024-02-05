@@ -1,6 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with
 [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## ngrok
+
+two steps:
+
+1. .env change localhost for ngrok public URL
+2. package.json yarn or yarnLinux (wherever we use in the Docker file must not have openBrowser command, only next
+   start)
+
 ## Getting Started
 
 First, run the development server:

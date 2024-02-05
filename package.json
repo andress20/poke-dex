@@ -10,6 +10,7 @@
     "open-browserLinux": "xdg-open http://localhost:3000",
     "build": "next build",
     "start": "npm run open-browser && next start",
+    "startDocker": "next start",
     "lint": "next lint --no-cache & ",
     "format": "prettier --write .",
     "storybook": "start-storybook -p 6006",
