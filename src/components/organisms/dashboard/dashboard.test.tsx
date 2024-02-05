@@ -1,8 +1,8 @@
 import { renderWithThemeProvider } from '@tests'
-import Dashboard from '@comp/organisms/pokemonPagination'
+import Dashboard from '@comp/organisms/dashboard'
 
 test('should render dashboard', () => {
-  renderWithThemeProvider(
+  const dashboard = renderWithThemeProvider(
     <Dashboard
       images={[
         {
@@ -12,4 +12,5 @@ test('should render dashboard', () => {
       ]}
     />
   )
+  expect(dashboard).toBeTruthy()
 })

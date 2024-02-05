@@ -1,5 +1,5 @@
 import { PokemonsImages, PokemonUrl } from '@src/types/IPokemon'
-// TODO - el storybook no esta tomando los @def ts.config!!
+// TODO: - el storybook no esta tomando los @def ts.config!!
 import PokemonCard from '../../molecules/card'
 import styles from './dashboard.module.css'
 import { Container } from '@mui/material'
