@@ -8,9 +8,7 @@
   background-size: 200%;
   background-image: url('/pokemon-wallpaper.jpg');
   padding: 10px;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  cursor: pointer;
+  border-radius: 1rem;
 }
 .cardTitle {
   text-align: center;

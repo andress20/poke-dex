@@ -9,6 +9,7 @@ import { useContext, useEffect } from 'react'
 import { useToast } from '@hooks'
 import Toast from '@atoms/toast'
 import { userActionTypes } from '@src/context/types'
+import Link from 'next/link'
 
 const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
   const user = useContext(UserContext)
@@ -32,8 +33,9 @@ const PokemonCard: React.FC<componentProps> = ({ image, title }) => {
 
   return (
     <Card className={styles.card} sx={{ maxWidth: 300, margin: '10px' }}>
-      {/* <Image className={classes.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="250" height="280" /> */}
-      <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
+      <Link href={`pokemon/${title}`}>
+        <Image className={styles.cardImage} src={image} alt="Pokemon Image" layout="fixed" width="200" height="200" />
+      </Link>
       <CardContent sx={{ padding: '0px' }}>
         <Typography className={styles.cardTitle} variant="h5" component="div">
           {title}
