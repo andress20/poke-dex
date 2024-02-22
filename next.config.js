@@ -31,4 +31,10 @@ module.exports = {
       },
     ]
   },
+  env: {
+    SITE_URL: 'http://localhost:3000',
+    POKEMON_API_URL: 'https://pokeapi.co/api/v2/pokemon/',
+    POKEMON_TYPES_API_URL: 'https://pokeapi.co/api/v2/type/',
+    API_LIMIT_URL_PARAMETER: '12',
+  },
 }
