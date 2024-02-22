@@ -13,8 +13,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   const name = params?.pokemonName
 
-  if (!pokemonsListDashboard.includes(name as string)) return { notFound: true }
-
   const response = await fetch(`${config.pokemonApi}${name}`)
   const pokemon: IPokemon = await response.json()
 
