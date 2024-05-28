@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
    * during the whole life cicle
    */
   const queryClient = useInitialQueryClient(setOpenToast)
+  console.log('queryClient', queryClient)
   const userMenuRef = useRef<HTMLDivElement>(null)
 
   return (
