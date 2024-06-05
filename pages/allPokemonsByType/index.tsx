@@ -34,6 +34,7 @@ function PokemonsByType() {
   /**
    * We can fetch data types with query also like this. But query tryies to fetch when component mount and we don't need that
    * because first time we haven't choosen anything that cause isLoading keeps true for ever. (if we don't use isLoading all works fine)
+   * update 27/05/2024: To avoid isLoading for ever we can set enabled=false
    *
    * Mutation implementation is better due the first fetch begin when we click button 'apply filter' and we can use isLoading normally
    */
